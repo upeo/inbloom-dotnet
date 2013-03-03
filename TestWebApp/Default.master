@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="default.master.cs" Inherits="Upeo.inBloomApiLibrary.TestWebApp.default_master" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head runat="server">
+		<title>inBloom API Library - Test Web App</title>
+		<asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+		<link href="Bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+		<style type="text/css">
+			body {
+				margin-top: 60px;
+			}
+			.navbar-inner .pull-left {
+				padding-left: 20px;
+			}
+			.navbar-inner .pull-right {
+				padding-right: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="form1" runat="server">
+			<div class="navbar navbar-fixed-top navbar-inverse">
+				<div class="navbar-inner">
+					<div class="pull-left">
+						<p class="navbar-text">
+							<h4 style="color: #fff">Hello <asp:Label ID="userFullName" runat="server"/></h4>
+						</p>
+					</div>
+					<div class="pull-left">
+						<asp:Button ID="LogoutButton" OnClick="LogoutButton_Click" Text="Logout" CssClass="btn" runat="server"/>
+					</div>
+					<div class="pull-right">
+						<p class="navbar-text"><h4 style="color: #fff">Roles: <asp:Label ID="userRoles" runat="server" /></h4></p>
+					</div>
+				</div>
+			</div>
+			
+			<div style="padding: 0 10px 0 10px">
+				<div class="row-fluid">
+					<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+					</asp:ContentPlaceHolder>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

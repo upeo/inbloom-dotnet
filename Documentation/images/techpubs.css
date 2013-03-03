@@ -1,0 +1,326 @@
+/*
+Copyright (c) 2013 Shared Learning Collaborative, LLC (SLC). 
+All Rights Reserved.
+
+This document and the information contained herein is provided on 
+an "AS IS" basis and SLC DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
+HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF 
+MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+*/
+
+body {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 1ipt;
+    margin: 20px 40px 20px 20px;
+}
+
+body a {
+	color: #00A7FF;
+	text-decoration: none;
+}
+
+body a:hover {
+    text-decoration: underline;
+}
+
+ul.toc_section {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 11pt;
+    line-height: 14px;
+    list-style-type: none;
+    margin: 5px 0 0;
+    padding-left: 0;
+}
+
+div.container {
+    margin: 40px 0 50px 430px;
+    position: relative;
+    width: 550px;
+}   
+
+h1,h2,h3 {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    margin: 20px 0 8px 0;
+    padding: 0;
+}
+
+p {
+    margin: 2px 0 10px 0;
+    padding: 0;
+}
+
+.table {
+    margin: 2px 0 0 0;
+}
+
+.table table {
+    margin: 2px 0 0 0;
+    font-size: inherit;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table td {
+    font-size: inherit;
+    padding: 8px; 
+    border: 1pt solid #CCCCCC;
+    vertical-align: top;
+}
+
+.table th {
+    font-size: inherit;
+    padding: 8px; 
+    border: 1px solid #000000;
+    vertical-align: top;
+}
+
+.informaltable table {
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.informaltable td {
+    padding: 8px; 
+    border: 1pt solid #CCCCCC;
+    vertical-align: top;
+}
+
+.informaltable th {
+    padding: 8px; 
+    border: 1px solid #000000;
+    vertical-align: top;
+}
+
+.copyright, .address, .legalnotice  {
+    font-size: smaller;
+}
+
+.legalnotice {
+    font-style: italic;
+}
+
+.address {
+    font-style: normal;
+}
+
+.warning {
+    border-left: 3px solid red;
+    padding-left: 10px;
+}
+
+.warning h3.title {
+    color: red;
+    margin-bottom: 0;
+}
+
+.warning p {
+    margin-top: 0;
+}
+
+.caution {
+    border-left: 3px solid orange;
+    padding-left: 10px;
+}
+
+.caution h3.title {
+    color: orange;
+    margin-bottom: 0;
+}
+
+.caution p {
+    margin-top: 0;
+}
+
+.note {
+    border-left: 3px solid blue;
+    padding-left: 10px;
+}
+
+.note h3.title {
+    color: blue;
+    margin-bottom: 0;
+}
+
+.note p {
+    margin-top: 0;
+}
+
+.command {
+    font-family: "Courier", monospace;
+    font-size: 90%;
+}
+
+.parameter {
+    font-family: "Courier", monospace;
+    font-size: 90%;
+}
+
+.userinput {
+    font-family: "Courier", monospace;
+    font-size: 90%;
+}
+
+.firstterm {
+    font-style: italic;
+}
+
+.citetitle {
+    font-style: italic;
+}
+
+.filename {
+    font-style: italic;
+}
+
+.guilabel {
+    font-style: italic;
+}
+
+.varname {
+    font-style: italic;
+}
+
+.methodname {
+    font-style: italic;
+}
+
+.guibutton {
+    font-weight: bold;
+}
+
+.classname {
+    font-weight: bold;
+}
+
+.itemizedlist li p {
+    position: relative;
+    margin: 0 10px 5px 5px;
+}
+
+.itemizedlist .note p {
+    margin: 0 10px 8px 0;
+}
+
+.orderedlist li p {
+    position: relative;
+    margin: 0 10px 5px 5px;
+}
+
+.procedure {
+    /* no adjustments */
+}
+
+.programlisting {
+    background-color: #DDDDDD;
+    padding: 5pt 5pt 5pt 8pt;
+    font-family: "Courier", monospace;
+    font-size: 80%;
+    line-height: 100%;
+    overflow-x: auto;
+}
+
+.simplesect {
+	margin-left: 30px;
+}
+
+.sect1 h2 {
+    padding: 5pt 5pt 5pt 8pt;
+    border-top: 3pt solid #000000;
+    border-bottom: 1pt solid #CCCCCC;
+    background-color: #DDDDDD;
+}
+
+.glosslist {
+    margin: 0 0 10px 20px;
+    background-color: #EEEEEE;
+    padding: 5pt 5pt 5pt 8pt;
+    border: 1pt solid #CCCCCC;
+}
+
+.glosslist .table {
+    margin-left: 0;
+    font-size: 11pt;
+}
+
+.glosslist dl {
+	margin: 0 30px 0 30px;
+}
+
+.glosslist dt {
+	text-align: right;
+	float: left;
+	font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    font-weight: lighter;
+}
+
+.glosslist dd {
+	float: inherit;
+	padding-left: 130px;
+}
+
+.toc {
+    font-size: 10pt;
+    line-height: 14px;
+    list-style-type: none;
+    margin: 5px 0 5px 0;
+    padding-left: 0;
+}
+
+.toc dl {
+    margin: 0;
+}
+
+.breadcrumbs {
+    width: 99.5%;
+    margin-top: 5px;
+    padding: 3px 0px 3px 5px;
+    font-size: 80%;
+    background-color: #DDDDDD;
+}
+
+/* Branding: header, footer, and logo */
+.header {
+    /* No whole-header styling... see the header branding blocks */
+}
+
+#header-branding-block {
+    border-bottom: 2px solid #666666;
+    width: 100%;
+}
+
+#header-doctitle {
+    position: relative;
+    font-weight: normal;
+    font-size: 175%;
+}
+
+.navheader {
+    border-bottom: 1px solid #666666;
+}
+
+.navfooter {
+    border-top: 1px solid #666666;
+}
+
+.footer {
+    /* No whole-footer styling... see the footer branding blocks */
+}
+
+#footer-branding-block {
+    padding: 20px 10px 3px 10px;
+    border-top: 2px solid #666666;
+    width: 100%;
+}
+
+#footer-branding-logo {
+    float: left;
+    width: 200px;
+    height: 100px;
+}
+
+#footer-branding-legal {
+    position: relative;
+    font-size: 80%;
+}
+

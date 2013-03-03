@@ -1,0 +1,139 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>inBloom API .NET Library - Developer Documentation</title>
+    <link rel="stylesheet" type="text/css" href="images/techpubs.css">
+    <meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+    <link rel="home" href="Index.html" title="inBloom API .NET Library - Developer Documentation">
+    <link rel="next" href="doc-440e554f-d7af-4a15-8899-b985b9ca958c.html" title="Introduction to Development for inBloom">
+</head>
+<body alink="#0000FF" bgcolor="white" link="#0000FF" text="black" vlink="#840084">
+    <div xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks"
+        id="header-branding-block">
+      
+        <div id="header-doctitle">
+            inBloom API .NET Library
+        </div>
+        <div class="breadcrumbs">
+            <span class="breadcrumb-link"><a href="Index.html">
+                inBloom API .NET Library</a></span> &gt; <span class="breadcrumb-node">
+                    Overview</span></div>
+    </div>
+    <div class="navheader">
+        
+    </div>
+    <div class="book" id="slc_developer_guide">
+        <div class="titlepage">
+            <div>
+                <div>
+                    <h2 class="title">
+                        Developer Documentation</h2>
+                </div>
+                <div>
+                    <p class="releaseinfo">
+                        v. 1.0
+                    </p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    <div class="chapter" id="doc-bf953f34-4820-4465-9fc7-6376d34d4865">
+        <div class="titlepage">
+            <div>
+                <div>
+                    <h2 class="title">
+                        inBloom .NET Library Overview</h2>
+                </div>
+            </div>
+        </div>
+        <p>
+            Upeo provides the inBloom .NET Library as a convenient option for .NET programmers
+            when developing applications that use the inBloom REST API. This documentation covers
+            setting up and using the .NET library.
+        </p>
+        <p>
+            Before you can access the library, you'll need to do the following:
+        </p>
+        <div xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks"
+            class="itemizedlist">
+            <ul>
+                <li class="listitem">
+                    <p>
+                        Have a developer account with the inBloom as described in <a class="xref" href="https://www.inbloom.org/sites/default/files/docs-developer-1.0.68-20130118/doc-e6a4907e-ba37-4a47-ae37-d74d64aec528.html"
+                            title="Sign Up and Log In"><i>Sign Up and Log In</i></a>.
+                    </p>
+                </li>
+                <li class="listitem">
+                    <p>
+                        Register your application so that you can use in your development environment. See
+                        <a class="xref" href="https://www.inbloom.org/sites/default/files/docs-developer-1.0.68-20130118/doc-909557d4-cf76-4144-8201-3f643664fb25.html"
+                            title="Registering Your Application in the Sandbox"><i>Registering Your Application
+                                in the Sandbox</i></a> for application registration in a Sandbox development
+                        environment, and see <a class="xref" href="https://www.inbloom.org/sites/default/files/docs-developer-1.0.68-20130118/doc-cb680e76-2e05-4447-a091-ba97bcd5c775.html"
+                            title="Registering Your Application in Production"><i>Registering Your Application in
+                                Production</i></a> for Production application registration.
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <p>
+            Note the following values configured or assigned during the application registration
+            process. You'll need these when using the library:
+        </p>
+        <div xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks"
+            class="itemizedlist">
+            <ul>
+                <li class="listitem">
+                    <p>
+                        <code class="varname">apiURL</code> - The base URL of where the inBloom REST API
+                        is hosted. The URLs of all REST API requests will be relative to this URL. This
+                        will be in the form <code class="filename">$BASE_URL/api/rest/v1.1/</code>.
+                    </p>
+                </li>
+                <li class="listitem">
+                    <p>
+                        <code class="varname">clientId</code> - A unique ID of the client assigned during
+                        application registration.
+                    </p>
+                </li>
+                <li class="listitem">
+                    <p>
+                        <code class="varname">clientSecret</code> - A cryptographically secure secret shared
+                        between the client and the REST API service, assigned alongside the client ID during
+                        application registration.
+                    </p>
+                </li>
+                <li class="listitem">
+                    <p>
+                        <code class="varname">callbackURL</code> - If you're developing a web application,
+                        this is the URL where you're currently hosting the application. During development,
+                        this is likely a persistent test server location that's running your application.
+                    </p>
+                </li>
+            </ul>
+        </div>
+       
+    </div>
+    <div class="navfooter">
+      
+    </div>
+   <div xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks"
+        id="footer-branding-block">
+        <div id="footer-branding-logo">
+            <img src="images/Upeo-Logo.png"></div>
+        <div id="footer-branding-legal">
+            <p>
+                Copyright 2013 Upeo, LLC.
+            </p>
+           
+            <p>
+                This document and the information contained herein is provided on an "AS IS" basis
+                and Upeo. DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+                LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE
+                ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+                PURPOSE.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

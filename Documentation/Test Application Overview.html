@@ -1,0 +1,256 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>inBloom API .NET Library - Developer Documentation</title>
+    <link rel="stylesheet" type="text/css" href="images/techpubs.css">
+    <meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+    <link rel="home" href="Index.html" title="inBloom API .NET Library - Developer Documentation">
+    <link rel="next" href="doc-440e554f-d7af-4a15-8899-b985b9ca958c.html" title="Introduction to Development for inBloom">
+</head>
+<body alink="#0000FF" bgcolor="white" link="#0000FF" text="black" vlink="#840084">
+    <div xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks"
+        id="header-branding-block">
+       
+        <div id="header-doctitle">
+            inBloom API .NET Library
+        </div>
+        <div class="breadcrumbs">
+         <span class="breadcrumb-link"><a href="Index.html">
+                inBloom API .NET Library</a></span> &gt; <span class="breadcrumb-node">
+                    Sample Application</span></div>
+    </div>
+    <div class="navheader">
+        
+    </div>
+	<div class="book" id="slc_developer_guide">
+        <div class="titlepage">
+            <div>
+                <div>
+                    <h2 class="title">
+                        Developer Documentation</h2>
+                </div>
+                <div>
+                    <p class="releaseinfo">
+                        v. 1.0
+                    </p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    <div class="chapter" id="a">
+        <div class="titlepage">
+            <div>
+                <div>
+                    <h2 class="title">
+                        Sample Application</h2>
+                </div>
+            </div>
+        </div>
+        <p>
+            The sample application is a simple "hello world" type application designed to demonstrate
+            OAuth authentication and .NET Library usage.
+        </p>
+        <div class="section" id="doc-b1a16096-bdf8-4f96-bb2c-1e974275a208">
+            <div class="titlepage">
+                <div>
+                    <div>
+                        <h2 class="title" style="clear: both">
+                            Source</h2>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Source for the sample application is included in the distribution under the <code
+                    class="filename">inBloom-Test-webapp</code> directory. The sample application is provided
+                as an inBloomApiClassLibrary project. To build the application from this source, 
+                Open this application in Microsoft Visual Studio and run the sample application.
+            </p>
+        </div>
+        <div class="section" id="doc-3910b0ba-5d88-4fce-9371-8982fa2d70fe">
+            <div class="titlepage">
+                <div>
+                    <div>
+                        <h2 class="title" style="clear: both">
+                            Prerequisites</h2>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Before running the sample application, your application must have access to data
+                in an inBloom Data Store. Use other sections of inBloom developer documentation
+                to determine how to set up your development environment, including adding data to
+                the data store.
+            </p>
+        </div>
+        <div class="section" id="doc-7fcc65f2-5f8c-40b8-9610-a5d683c9db69">
+            <div class="titlepage">
+                <div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <div class="table" id="table-2dceca76-77e6-4b96-a371-f60fdf1742e5">
+                <p class="title">
+                    <b></b>
+                </p>
+                <div class="table-contents">
+                    <table summary="" border="1" width="100%">
+                        <colgroup>
+                            <col class="firstCol">
+                            <col class="secondCol">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>
+                                        sli.sample.apiUrl
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        URL of the inBloom REST API the application's using. Please ensure the URL matches
+                                        the desired environment (Sandbox or Production). (Example: <code class="filename">https://api.sandbox.example.org/</code>)
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        sli.sample.callbackUrl
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        OAuth callback URL for the sample application. inBloom redirects to this URL after
+                                        a user authenticates with its identity provider. This must match the <code class="varname">
+                                            redirect_url</code> configured when requesting a new application. (Example:
+                                        <code class="filename">https://myapp.example.com/callback</code>)
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        sli.sample.clientId
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Unique string identifying this application, created during the application registration
+                                        process with the target inBloom environment.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        sli.sample.clientSecret
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Secret used to authenticate this application, created during the application registration
+                                        process with the target inBloom environment. Care should be taken to ensure this
+                                        value is secure.*
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br class="table-break">
+            <p>
+                * Production apps should ensure this value is encrypted or otherwise locked down.
+            </p>
+            <p>
+                The sample application searches for the <code class="filename">sample.properties</code>
+                file by looking up the value of a .NET application configuration called 
+                app.config.
+            </p>
+        </div>
+        <div class="section" id="doc-50c723a8-223b-4d76-b696-a6f4761f0eac">
+            <div class="titlepage">
+                <div>
+                    <div>
+                        <h2 class="title" style="clear: both">
+                            Running using IIS</h2>
+                    </div>
+                </div>
+            </div>
+            <p>
+                You can run the sample application with 
+                IIS also. Before that the application should configured to test this sample 
+                application.
+            </p>
+        </div>
+        <div class="section" id="doc-3aacf6d2-cf48-4440-aaf5-f7397d23e18f">
+            <div class="titlepage">
+                <div>
+                    <div>
+                        <h2 class="title" style="clear: both">
+                            Using the Sample Application</h2>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Once the sample application is running, access it using the following steps:
+            </p>
+            <div xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks"
+                class="procedure">
+                <ol type="1">
+                    <li class="step">
+                        <p>
+                            Visit the sample application's URL in your browser. (Example: <code class="filename">
+                                http://example.com/sample/students</code>)
+                        </p>
+                    </li>
+                    <li class="step">
+                        <p>
+                            The sample application will redirect you to the inBloom for authentication. Choose
+                            the appropriate realm and authenticate with the identity provider.
+                        </p>
+                    </li>
+                    <li class="step">
+                        <p>
+                            After authentication, inBloom redirects you back to the sample application following
+                            authentication.
+                        </p>
+                    </li>
+                    <li class="step">
+                        <p>
+                            The sample application will display your name, a list of roles your logged in user
+                            currently has, and any students the logged in user can see. If you do not see any
+                            students, students may not exist within the educational organizations the application
+                            is approved to see. The current user may not have the appropriate context to see
+                            any students (for example, a teacher may not have any students associated with his
+                            or her sections).
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="navfooter">
+        
+    </div>
+    <div xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks"
+        id="footer-branding-block">
+        <div id="footer-branding-logo">
+            <img src="images/Upeo-Logo.png"></div>
+        <div id="footer-branding-legal">
+            <p>
+                Copyright 2013 Upeo, LLC.
+             </p>
+           
+            <p>
+                This document and the information contained herein is provided on an "AS IS" basis
+                and Upeo. DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+                LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE
+                ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+                PURPOSE.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
