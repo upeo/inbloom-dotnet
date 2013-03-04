@@ -17,6 +17,7 @@
 
 using System;
 using System.Web.UI;
+using inBloomApiLibrary;
 
 namespace Upeo.inBloomApiLibrary.TestWebApp
 {
@@ -38,6 +39,16 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
 
         protected void LogoutButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var service = new GetHomeData();
+                service.LogOut(Session["access_token"].ToString());
+            }
+            catch (Exception)
+            {
+                // Error logging out of inBloom
+            }
+
             Session.Abandon();
             Response.Redirect("Default.aspx");
         }
