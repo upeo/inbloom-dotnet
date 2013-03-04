@@ -26,8 +26,7 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
 	    protected void LoginButton_Click(object sender, EventArgs e)
 	    {
             var auth = new OAuth();
-            string path = auth.CallAuthorization(null, null);
-            Response.Redirect(path);
+            Response.Redirect(auth.GetAuthorizationUrl());
 	    }
 	}
 }

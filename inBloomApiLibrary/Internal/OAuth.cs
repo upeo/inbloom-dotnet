@@ -79,6 +79,14 @@ namespace inBloomApiLibrary
 		#endregion
 
 		/// <summary>
+		/// Gets the URL to which users should be redirected for login
+		/// </summary>
+		public string GetAuthorizationUrl()
+		{
+			return string.Format(_commonData.ApiUrl + "/oauth/authorize?client_id={0}&redirect_uri={1}", _clientId, _redirectUrl);
+		}
+
+		/// <summary>
 		/// This function is used to check authentication of the user and gives access to api's.
 		/// </summary>
 		/// <param name="accessToken"></param>
@@ -86,83 +94,72 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string CallAuthorization(string accessToken, string code)
 		{
-			string returnValue = string.Empty;
+			// We already have an access token in session
+			if (!string.IsNullOrEmpty(accessToken))
+				return "OAuthSuccess";
+
+			// We get a code back from the first leg of OAuth process.  If we don't have one, let's get it.
+			// Here the user will log into the SLC.  This page will be called back with the code to do second leg of OAuth.
+			if (string.IsNullOrEmpty(code))
+				return GetAuthorizationUrl();
 
 			try
 			{
-				// We need an access token to call the API.  If we don't have one, let's get it, otherwise, redirect to main.aspx.
-				if (accessToken == null)
+				// Construct API call to validate code
+				string sessionUrl = string.Format(_commonData.ApiUrl + "/oauth/token?client_id={0}&client_secret={1}&grant_type=authorization_code&redirect_uri={2}&code={3}", _clientId, _clientSecret, _redirectUrl, code);
+
+				// Initialise REST Client
+				var restClient = new WebClient();
+				restClient.Headers.Add("Content-Type", "application/vnd.slc+json");
+				restClient.Headers.Add("Accept", "application/vnd.slc+json");
+
+				// Call authorization endpoint
+				string result = restClient.DownloadString(sessionUrl);
+
+				// Convert response into a JSON object
+				var response = JObject.Parse(result);
+				var accessToken1 = (string)response["access_token"];
+
+				// If we have a valid token, it'll be 38 chars long.  Let's add it to session if so.
+				if (accessToken1.Length == 38)
 				{
-					// We get a code back from the first leg of OAuth process.  If we don't have one, let's get it.
-					if (code == null)
+					// Session.Add("access_token", access_token);
+					AccessToken = accessToken1;
+
+					var apiEndPoint = _commonData.ApiUrl + "/rest/system/session/check";
+					var request = ApiClient.Request(apiEndPoint, AccessToken, RequestType.JsonObject);
+
+					if (request.ResponseObject != null)
 					{
-						// Here the user will log into the SLC.  This page will be called back with the code to do second leg of OAuth.
-						returnValue = string.Format(_commonData.ApiUrl + "/oauth/authorize?client_id={0}&redirect_uri={1}", _clientId, _redirectUrl);
-					}
-					else
-					{
-						// Now we have a code, we can run the second leg of OAuth process.
-						
-						string sessionUrl = string.Format(_commonData.ApiUrl +  "/oauth/token?client_id={0}&client_secret={1}&grant_type=authorization_code&redirect_uri={2}&code={3}", _clientId, _clientSecret, _redirectUrl, code);
-
-						var restClient = new WebClient();
-						restClient.Headers.Add("Content-Type", "application/vnd.slc+json");
-						restClient.Headers.Add("Accept", "application/vnd.slc+json");
-						
-						// Call authorization endpoint
-						string result = restClient.DownloadString(sessionUrl);
-
-						// Convert response into a JSON object
-						var response = JObject.Parse(result);
-						var accessToken1 = (string)response["access_token"];
-
-						// If we have a valid token, it'll be 38 chars long.  Let's add it to session if so.
-						if (accessToken1.Length == 38)
+						JArray userInfo = request.ResponseObject;
+						if (userInfo.Count == 1)
 						{
-							// Session.Add("access_token", access_token);
-							AccessToken = accessToken1;
-
-							var apiEndPoint = _commonData.ApiUrl + "/rest/system/session/check";
-							var request = ApiClient.Request(apiEndPoint, AccessToken, RequestType.JsonObject);
-
-							if (request.ResponseObject != null)
-							{
-								JArray userInfo = request.ResponseObject;
-								if (userInfo.Count == 1)
-								{
-									UserFullName = userInfo[0]["full_name"].ToString();
-									UserSLIRoles = userInfo[0]["sliRoles"].ToString();
-								}
-							}
-
-							apiEndPoint = _commonData.ApiUrl + "/rest/v1.1/home";
-							request = ApiClient.Request(apiEndPoint, AccessToken, RequestType.JsonObject);
-							
-							if (request.ResponseObject != null)
-							{
-								JArray userInfo = request.ResponseObject;
-
-								foreach (JObject obj in (JArray)userInfo[0]["links"])
-								{
-									if ((string)obj["rel"] == "self")
-									{
-										var link = (string)obj["href"];
-										var id = link.Substring(link.Length - 43);
-
-										UserId = id;
-									}
-								}
-							}
-							
-							// Redirect to app main page.
-							returnValue = "OAuthSuccess";
+							UserFullName = userInfo[0]["full_name"].ToString();
+							UserSLIRoles = userInfo[0]["sliRoles"].ToString();
 						}
 					}
-				}
-				else
-				{
-					// We have an access token in session, let's redirect to app main page.
-					returnValue = "OAuthSuccess";
+
+					apiEndPoint = _commonData.ApiUrl + "/rest/v1.1/home";
+					request = ApiClient.Request(apiEndPoint, AccessToken, RequestType.JsonObject);
+
+					if (request.ResponseObject != null)
+					{
+						JArray userInfo = request.ResponseObject;
+
+						foreach (JObject obj in (JArray)userInfo[0]["links"])
+						{
+							if ((string)obj["rel"] == "self")
+							{
+								var link = (string)obj["href"];
+								var id = link.Substring(link.Length - 43);
+
+								UserId = id;
+							}
+						}
+					}
+
+					// Redirect to app main page.
+					return "OAuthSuccess";
 				}
 			}
 			catch (Exception ex)
@@ -171,7 +168,7 @@ namespace inBloomApiLibrary
 				throw;
 			}
 
-			return returnValue;
+			return null;
 		}
 	}
 }
