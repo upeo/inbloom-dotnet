@@ -17,7 +17,10 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
         {
             // Check for a token in the session already, and if found, no action is required
             if (context.Session["access_token"] != null)
+            {
                 context.Response.Redirect("DataView.aspx");
+                return;
+            }
 
             // Init oAuth
             var oAuth = new OAuth();
@@ -27,27 +30,27 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
             {
                 string path = oAuth.CallAuthorization(null, null);
                 context.Response.Redirect(path);
+                return;
             }
-            else
+            
+            // Otherwise, we have a code, we can run the second leg of OAuth process.
+            string code = context.Request.QueryString["code"];
+            string authorization = oAuth.CallAuthorization(null, code);
+
+            // OAuth successful so get values, store in session and continue
+            if (authorization == "OAuthSuccess")
             {
-                // Now we have a code, we can run the second leg of OAuth process.
-                string code = context.Request.QueryString["code"];
-                string authorization = oAuth.CallAuthorization(null, code);
-
-                // OAuth successful so get values, store in session and continue
-                if (authorization == "OAuthSuccess")
+                // Ensure that all required values were retrieved from the OAuth login
+                if (oAuth.AccessToken != null && oAuth.UserFullName != null && oAuth.UserSLIRoles != null && oAuth.UserId != null)
                 {
-                    if (oAuth.AccessToken != null && oAuth.UserFullName != null && oAuth.UserSLIRoles != null && oAuth.UserId != null)
-                    {
-                        // Authorization successful; set session variables
-                        context.Session.Add("access_token", oAuth.AccessToken);
-                        context.Session.Add("user_FullName", oAuth.UserFullName);
-                        context.Session.Add("user_SLIRoles", oAuth.UserSLIRoles);
-                        context.Session.Add("user_ID", oAuth.UserId);
+                    // Authorization successful; set session variables
+                    context.Session.Add("access_token", oAuth.AccessToken);
+                    context.Session.Add("user_FullName", oAuth.UserFullName);
+                    context.Session.Add("user_SLIRoles", oAuth.UserSLIRoles);
+                    context.Session.Add("user_ID", oAuth.UserId);
 
-                        // Redirect to default page
-                        context.Response.Redirect("DataView.aspx");
-                    }
+                    // Redirect to default page
+                    context.Response.Redirect("DataView.aspx");
                 }
             }
         }
