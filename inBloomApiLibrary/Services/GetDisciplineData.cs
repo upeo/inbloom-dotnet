@@ -43,7 +43,7 @@ namespace inBloomApiLibrary
 		public JArray GetDisciplineActions(string accessToken)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/disciplineActions");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace inBloomApiLibrary
 		public JArray GetDisciplineActionById(string accessToken, string disciplineId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/disciplineActions/{0}", disciplineId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace inBloomApiLibrary
 		public JArray GetDisciplineActionCustom(string accessToken, string disciplineId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/disciplineActions/{0}/custom", disciplineId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -117,7 +117,7 @@ namespace inBloomApiLibrary
 		public JArray GetDisciplineIncidents(string accessToken)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/disciplineIncidents");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -129,7 +129,7 @@ namespace inBloomApiLibrary
 		public JArray GetDisciplineIncidentById(string accessToken, string disciplineId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/disciplineIncidents/{0}", disciplineId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -141,7 +141,7 @@ namespace inBloomApiLibrary
 		public JArray GetDisciplineIncidentCustom(string accessToken, string disciplineId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/disciplineIncidents/{0}/custom", disciplineId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -153,7 +153,7 @@ namespace inBloomApiLibrary
 		public JArray GetDisciplineIncidentStudentDisciplineIncidentAssociations(string accessToken, string disciplineId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/disciplineIncidents/{0}/studentDisciplineIncidentAssociations", disciplineId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -165,7 +165,7 @@ namespace inBloomApiLibrary
 		public JArray GetDisciplineIncidentStudentDisciplineIncidentAssociationStudents(string accessToken, string disciplineId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/disciplineIncidents/{0}/studentDisciplineIncidentAssociations/students", disciplineId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>

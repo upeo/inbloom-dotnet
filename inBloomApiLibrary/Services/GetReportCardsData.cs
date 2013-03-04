@@ -29,7 +29,7 @@ namespace inBloomApiLibrary
 		public JArray GetReportCards(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/reportCards");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace inBloomApiLibrary
 		public JArray GetReportCardCustom(string accessToken, string reportId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/reportCards/{0}/custom", reportId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods

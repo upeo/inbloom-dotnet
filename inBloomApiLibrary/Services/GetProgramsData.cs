@@ -30,7 +30,7 @@ namespace inBloomApiLibrary
 		public JArray GetPrograms(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -42,7 +42,7 @@ namespace inBloomApiLibrary
 		public JArray GetProgramById(string accessToken, string programId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}", programId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -54,7 +54,7 @@ namespace inBloomApiLibrary
 		public JArray GetProgramCustom(string accessToken, string programId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/custom", programId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -66,7 +66,7 @@ namespace inBloomApiLibrary
 		public JArray GetProgramStaffProgramAssociations(string accessToken, string programId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/staffProgramAssociations", programId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -78,7 +78,7 @@ namespace inBloomApiLibrary
 		public JArray GetProgramStaffProgramAssociationStaff(string accessToken, string programId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/staffProgramAssociations/staff", programId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -90,7 +90,7 @@ namespace inBloomApiLibrary
 		public JArray GetProgramStudentProgramAssociations(string accessToken, string programId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/studentProgramAssociations", programId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -102,7 +102,7 @@ namespace inBloomApiLibrary
 		public JArray GetProgramStudentProgramAssociationStudents(string accessToken, string programId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/studentProgramAssociations/students", programId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods

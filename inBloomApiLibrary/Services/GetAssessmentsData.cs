@@ -58,7 +58,7 @@ namespace inBloomApiLibrary
 		public JArray GetAssessments(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace inBloomApiLibrary
 		public JArray GetAssessmentLearningObjective(string accessToken, string assessmentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/learningObjectives", assessmentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -76,7 +76,7 @@ namespace inBloomApiLibrary
 		public JArray GetAssessmentLearningStandards(string accessToken, string assessmentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/learningStandards", assessmentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -88,7 +88,7 @@ namespace inBloomApiLibrary
 		public JArray GetAssessmentStudentAssessments(string accessToken, string assessmentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/studentAssessments", assessmentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -100,7 +100,7 @@ namespace inBloomApiLibrary
 		public JArray GetAssessmentStudentAssessmentsStudents(string accessToken, string assessmentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/studentAssessments/students", assessmentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -112,7 +112,7 @@ namespace inBloomApiLibrary
 		public JArray GetAssessmentCustom(string accessToken, string assessmentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/custom", assessmentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 	}
 }

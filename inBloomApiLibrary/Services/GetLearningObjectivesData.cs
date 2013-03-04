@@ -29,7 +29,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningObjectives(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningObjectives");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningObjectiveById(string accessToken, string learningId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningObjectives/{0}", learningId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -53,7 +53,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningObjectiveCustom(string accessToken, string learningId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningObjectives/{0}/custom", learningId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -65,7 +65,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningObjectiveChildLearningObjectives(string accessToken, string learningId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningObjectives/{0}/childLearningObjectives", learningId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -77,7 +77,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningObjectiveLearningStandards(string accessToken, string learningId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningObjectives/{0}/learningStandards", learningId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -89,7 +89,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningObjectiveParentLearningObjectives(string accessToken, string learningId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningObjectives/{0}/parentLearningObjectives", learningId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -101,7 +101,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningObjectiveStudentCompetencies(string accessToken, string learningId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningObjectives/{0}/studentCompetencies", learningId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -112,7 +112,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningStandards(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningStandards");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -124,7 +124,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningStandardById(string accessToken, string learningId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningStandards/{0}", learningId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -136,7 +136,7 @@ namespace inBloomApiLibrary
 		public JArray GetLearningStandardCustom(string accessToken, string learningId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/learningStandards/{0}/custom", learningId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete learningStandards

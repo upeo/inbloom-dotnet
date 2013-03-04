@@ -29,7 +29,7 @@ namespace inBloomApiLibrary
 		public JArray GetParents(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace inBloomApiLibrary
 		public JArray GetParentById(string accessToken, string parentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}", parentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -53,7 +53,7 @@ namespace inBloomApiLibrary
 		public JArray GetParentCustom(string accessToken, string parentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}/custom", parentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -65,7 +65,7 @@ namespace inBloomApiLibrary
 		public JArray GetParentStudentParentAssociations(string accessToken, string parentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}/studentParentAssociations", parentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -77,7 +77,7 @@ namespace inBloomApiLibrary
 		public JArray GetParentStudentParentAssociationStudents(string accessToken, string parentsId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}/studentParentAssociations/students", parentsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete

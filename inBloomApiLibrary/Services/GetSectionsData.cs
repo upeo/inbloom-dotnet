@@ -30,7 +30,7 @@ namespace inBloomApiLibrary
 		public JArray GetSections(string accessToken, string userId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections", userId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -42,7 +42,7 @@ namespace inBloomApiLibrary
 		public JArray GetSectionCustom(string accessToken, string sectionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/custom", sectionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -54,7 +54,7 @@ namespace inBloomApiLibrary
 		public JArray GetSectionById(string accessToken, string sectionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}", sectionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -66,7 +66,7 @@ namespace inBloomApiLibrary
 		public JArray GetSectionStudentAssociations(string accessToken, string sectionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/studentSectionAssociations", sectionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -78,7 +78,7 @@ namespace inBloomApiLibrary
 		public JArray GetSectionStudentAssociationStudentList(string accessToken, string sectionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/studentSectionAssociations/students", sectionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -90,7 +90,7 @@ namespace inBloomApiLibrary
 		public JArray GetSectionTeacherAssociations(string accessToken, string sectionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/teacherSectionAssociations", sectionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -102,7 +102,7 @@ namespace inBloomApiLibrary
 		public JArray GetSectionTeacherAssociationTeacherList(string accessToken, string sectionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/teacherSectionAssociations/teachers", sectionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods

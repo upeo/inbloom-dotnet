@@ -29,7 +29,7 @@ namespace inBloomApiLibrary
 		public JArray GetHome(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/home");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>

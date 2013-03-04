@@ -33,7 +33,7 @@ namespace inBloomApiLibrary
 		public JArray GetCohorts(string accessToken)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace inBloomApiLibrary
 		public JArray GetCohortCustom(string accessToken, string cohortsId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/custom", cohortsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -57,7 +57,7 @@ namespace inBloomApiLibrary
 		public JArray GetCohortById(string accessToken, string cohortsId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}", cohortsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -69,7 +69,7 @@ namespace inBloomApiLibrary
 		public JArray GetCohortStaffCohortAssociations(string accessToken, string cohortsId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/staffCohortAssociations", cohortsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -81,7 +81,7 @@ namespace inBloomApiLibrary
 		public JArray GetCohortStaffCohortAssociationStaff(string accessToken, string cohortsId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/staffCohortAssociations/staff", cohortsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -93,7 +93,7 @@ namespace inBloomApiLibrary
 		public JArray GetCohortStudentCohortAssociations(string accessToken, string cohortsId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/studentCohortAssociations", cohortsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -105,7 +105,7 @@ namespace inBloomApiLibrary
 		public JArray GetCohortStudentCohortAssociationStudents(string accessToken, string cohortsId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/studentCohortAssociations/students", cohortsId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>

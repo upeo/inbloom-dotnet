@@ -29,7 +29,7 @@ namespace inBloomApiLibrary
 		public JArray GetAttendances(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/attendances");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace inBloomApiLibrary
 		public JArray GetAttendanceCustom(string accessToken, string attendanceId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/attendances/{0}/custom", attendanceId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>

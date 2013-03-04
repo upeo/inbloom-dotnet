@@ -31,7 +31,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeachers(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teachers");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherCustom(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teachers/{0}/custom", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherTeacherSchoolAssociations(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teachers/{0}/teacherSchoolAssociations", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherTeacherSchoolAssociationSchools(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teachers/{0}/teacherSchoolAssociations/schools", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -79,7 +79,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherTeacherSectionAssociations(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teachers/{0}/teacherSectionAssociations", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -91,7 +91,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherTeacherSectionAssociationSections(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teachers/{0}/teacherSectionAssociations/sections", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods
@@ -146,7 +146,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSchoolAssociations(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSchoolAssociations");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -158,7 +158,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSchoolAssociationCustom(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSchoolAssociations/{0}/custom", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -170,7 +170,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSchoolAssociationById(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSchoolAssociations/{0}", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -182,7 +182,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSchoolAssociationSchools(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSchoolAssociations/{0}/schools", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -194,7 +194,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSchoolAssociationTeachers(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSchoolAssociations/{0}/teachers", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods
@@ -246,7 +246,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSectionAssociations(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSectionAssociations");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -258,7 +258,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSectionAssociationCustom(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSectionAssociations/{0}/custom", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -270,7 +270,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSectionAssociationById(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSectionAssociations/{0}", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -282,7 +282,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSectionAssociationSections(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSectionAssociations/{0}/sections", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -294,7 +294,7 @@ namespace inBloomApiLibrary
 		public JArray GetTeacherSectionAssociationTeachers(string accessToken, string teacherId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teacherSectionAssociations/{0}/teachers", teacherId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods

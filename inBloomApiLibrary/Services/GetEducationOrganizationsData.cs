@@ -31,7 +31,7 @@ namespace inBloomApiLibrary
 		public JArray GetEducationOrganizations(string accessToken)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace inBloomApiLibrary
 		public JArray GetEducationOrganizationById(string accessToken, string educationId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}", educationId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -57,7 +57,7 @@ namespace inBloomApiLibrary
 			var apiEndPoint =
 				String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}/staffEducationOrgAssignmentAssociations",
 							  educationId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -72,7 +72,7 @@ namespace inBloomApiLibrary
 			var apiEndPoint =
 				String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}/staffEducationOrgAssignmentAssociations/staff",
 							  educationId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -84,7 +84,7 @@ namespace inBloomApiLibrary
 		public JArray GetEducationOrganizationCustom(string accessToken, string educationId)
 		{
 			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}/custom", educationId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#endregion

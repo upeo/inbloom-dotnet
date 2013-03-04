@@ -31,7 +31,7 @@ namespace inBloomApiLibrary
 		public JArray GetSessions(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace inBloomApiLibrary
 		public JArray GetSessionCustom(string accessToken, string userId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}/custom", userId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace inBloomApiLibrary
 		public JArray GetSessionById(string accessToken, string sessionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}", sessionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace inBloomApiLibrary
 		public JArray GetSessionCourseOfferings(string accessToken, string sessionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}/courseOfferings", sessionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -79,7 +79,7 @@ namespace inBloomApiLibrary
 		public JArray GetSessionCourseOfferingCourses(string accessToken, string sessionId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}/courseOfferings/courses", sessionId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#endregion

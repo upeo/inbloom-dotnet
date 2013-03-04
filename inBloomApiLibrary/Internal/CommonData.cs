@@ -15,56 +15,56 @@
  */
 
 using System;
-using Newtonsoft.Json.Linq;
 using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	internal class CommonData
-	{
-		public string BaseUrl = "https://api.sandbox.inbloom.org/api/rest/v1.1";
-		public string ApiUrl = "https://api.sandbox.inbloom.org/api";
-	   
-		public JArray CallApi(string accessToken, string apiEndPoint)
-		{
-			var request = ApiClient.Request(apiEndPoint, accessToken);
-			return request.ResponseObject;
-		}
+    internal class CommonData
+    {
+        public string ApiUrl = "https://api.sandbox.inbloom.org/api";
+        public string BaseUrl = "https://api.sandbox.inbloom.org/api/rest/v1.1";
 
-		public string CallApiForPost(string apiEndPoint, string accessToken, string data)
-		{
-			var webClient = new ExtendedWebClient();
-			webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
-			webClient.Headers.Add("Content-Type", "application/vnd.slc+json");
-			webClient.Headers.Add("Accept", "application/vnd.slc+json");
-			return webClient.UploadString(apiEndPoint, "POST", data);
-		}
+        public JArray CallApiForGet(string apiEndPoint, string accessToken)
+        {
+            var request = ApiClient.Request(apiEndPoint, accessToken);
+            return request.ResponseObject;
+        }
 
-		public string CallApiForPut(string apiEndPoint, string accessToken, string data)
-		{
-			var webClient = new ExtendedWebClient();
-			webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
-			webClient.Headers.Add("Content-Type", "application/vnd.inbloom+json");
-			webClient.Headers.Add("Accept", "application/vnd.inbloom+json");
-			return webClient.UploadString(apiEndPoint, "PUT", data);
-		}
+        public string CallApiForPost(string apiEndPoint, string accessToken, string data)
+        {
+            var webClient = new ExtendedWebClient();
+            webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
+            webClient.Headers.Add("Content-Type", "application/vnd.slc+json");
+            webClient.Headers.Add("Accept", "application/vnd.slc+json");
+            return webClient.UploadString(apiEndPoint, "POST", data);
+        }
 
-		public string CallApiForDelete(String apiEndPoint, string accessToken)
-		{
-			var webClient = new ExtendedWebClient();
-			webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
-			webClient.Headers.Add("Content-Type", "application/vnd.inbloom+json");
-			webClient.Headers.Add("Accept", "application/vnd.inbloom+json");
-			return webClient.UploadString(apiEndPoint, "DELETE");
-		}
+        public string CallApiForPut(string apiEndPoint, string accessToken, string data)
+        {
+            var webClient = new ExtendedWebClient();
+            webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
+            webClient.Headers.Add("Content-Type", "application/vnd.inbloom+json");
+            webClient.Headers.Add("Accept", "application/vnd.inbloom+json");
+            return webClient.UploadString(apiEndPoint, "PUT", data);
+        }
 
-		public string CallApiWithParameter(String apiEndPoint, string accessToken)
-		{
-			var webClient = new WebClient();
-			webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
-			webClient.Headers.Add("Content-Type", "application/vnd.slc+json");
-			webClient.Headers.Add("Accept", "application/vnd.slc+json");
-			return webClient.DownloadString(apiEndPoint);
-		}
-	}
+        public string CallApiForDelete(String apiEndPoint, string accessToken)
+        {
+            var webClient = new ExtendedWebClient();
+            webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
+            webClient.Headers.Add("Content-Type", "application/vnd.inbloom+json");
+            webClient.Headers.Add("Accept", "application/vnd.inbloom+json");
+            return webClient.UploadString(apiEndPoint, "DELETE");
+        }
+
+        public string CallApiWithParameter(String apiEndPoint, string accessToken)
+        {
+            var webClient = new WebClient();
+            webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
+            webClient.Headers.Add("Content-Type", "application/vnd.slc+json");
+            webClient.Headers.Add("Accept", "application/vnd.slc+json");
+            return webClient.DownloadString(apiEndPoint);
+        }
+    }
 }

@@ -44,7 +44,7 @@ namespace inBloomApiLibrary
 		public JArray GetCompetencyLevelDescriptorTypes(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -56,7 +56,7 @@ namespace inBloomApiLibrary
 		public JArray GetCompetencyLevelDescriptorTypeById(string accessToken, string competencyId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes/{0}", competencyId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -68,7 +68,7 @@ namespace inBloomApiLibrary
 		public JArray GetCompetencyLevelDescriptorTypeCustom(string accessToken, string competencyId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes/{0}/custom", competencyId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace inBloomApiLibrary
 		public JArray GetCompetencyLevelDescriptor(string accessToken)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor");
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -127,7 +127,7 @@ namespace inBloomApiLibrary
 		public JArray GetCompetencyLevelDescriptorById(string accessToken, string competencyId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor/{0}", competencyId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -139,7 +139,7 @@ namespace inBloomApiLibrary
 		public JArray GetCompetencyLevelDescriptorCustom(string accessToken, string competencyId)
 		{
 			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor/{0}/custom", competencyId);
-			return CommonData.CallApi(accessToken, apiEndPoint);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
