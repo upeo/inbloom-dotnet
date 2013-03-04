@@ -886,6 +886,18 @@ namespace inBloomApiLibrary
 		#endregion
 
 		#region Students
+		
+		/// <summary>
+		///     Get student by ID
+		/// </summary>
+		/// <param name="accessToken"></param>
+		/// <param name="studentId"></param>
+		/// <returns></returns>
+		public JArray GetStudentById(string accessToken, string studentId)
+		{
+			string apiEndPoint = String.Format(CommonData.BaseUrl + "/students/{0}", studentId);
+			return CommonData.CallApi(accessToken, apiEndPoint);
+		}
 
 		/// <summary>
 		///     Gets students details.
