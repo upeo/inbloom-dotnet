@@ -24,6 +24,18 @@ namespace inBloomApiLibrary
 		#region StudentAcademicRecords
 
 		/// <summary>
+		///     Gets student academic records details for specified student.
+		/// </summary>
+		/// <param name="accessToken"></param>
+		/// <param name="studentId"></param>
+		/// <returns></returns>
+		public JArray GetStudentAcademicRecordByStudentId(string accessToken, string studentId)
+		{
+			string apiEndPoint = String.Format(CommonData.BaseUrl + string.Format("/students/{0}/studentAcademicRecords", studentId));
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+		}
+
+		/// <summary>
 		///     Gets student academic records details.
 		/// </summary>
 		/// <param name="accessToken"></param>
@@ -38,11 +50,11 @@ namespace inBloomApiLibrary
 		///     Gets student academic records custom details.
 		/// </summary>
 		/// <param name="accessToken"></param>
-		/// <param name="studentId"></param>
+		/// <param name="studentAcademicRecordId"></param>
 		/// <returns></returns>
-		public JArray GetStudentAcademicRecordCustom(string accessToken, string studentId)
+		public JArray GetStudentAcademicRecordCustom(string accessToken, string studentAcademicRecordId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/studentAcademicRecords/{0}/custom", studentId);
+			string apiEndPoint = String.Format(CommonData.BaseUrl + "/studentAcademicRecords/{0}/custom", studentAcademicRecordId);
 			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
@@ -50,11 +62,11 @@ namespace inBloomApiLibrary
 		///     Gets student academic records details by id.
 		/// </summary>
 		/// <param name="accessToken"></param>
-		/// <param name="studentId"></param>
+		/// <param name="studentAcademicRecordId"></param>
 		/// <returns></returns>
-		public JArray GetStudentAcademicRecordById(string accessToken, string studentId)
+		public JArray GetStudentAcademicRecordById(string accessToken, string studentAcademicRecordId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/studentAcademicRecords/{0}", studentId);
+			string apiEndPoint = String.Format(CommonData.BaseUrl + "/studentAcademicRecords/{0}", studentAcademicRecordId);
 			return CommonData.CallApiForGet(apiEndPoint, accessToken);
 		}
 
