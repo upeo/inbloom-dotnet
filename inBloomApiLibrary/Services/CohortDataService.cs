@@ -23,7 +23,7 @@ namespace inBloomApiLibrary
 	/// <summary>
 	/// Cohorts Service
 	/// </summary>
-	public class GetCohortsData : ServiceBase
+	public class CohortDataService : ServiceBase
 	{
 		/// <summary>
 		/// Gets cohorts details.
@@ -32,8 +32,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCohorts(string accessToken)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -44,8 +44,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCohortCustom(string accessToken, string cohortsId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/custom", cohortsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts/{0}/custom", cohortsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -56,8 +56,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCohortById(string accessToken, string cohortsId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}", cohortsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts/{0}", cohortsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -68,8 +68,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCohortStaffCohortAssociations(string accessToken, string cohortsId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/staffCohortAssociations", cohortsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts/{0}/staffCohortAssociations", cohortsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -80,8 +80,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCohortStaffCohortAssociationStaff(string accessToken, string cohortsId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/staffCohortAssociations/staff", cohortsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts/{0}/staffCohortAssociations/staff", cohortsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -92,8 +92,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCohortStudentCohortAssociations(string accessToken, string cohortsId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/studentCohortAssociations", cohortsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts/{0}/studentCohortAssociations", cohortsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -104,8 +104,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCohortStudentCohortAssociationStudents(string accessToken, string cohortsId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/studentCohortAssociations/students", cohortsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts/{0}/studentCohortAssociations/students", cohortsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -116,8 +116,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostCohorts(string accessToken, string data)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -129,8 +129,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutCohorts(string accessToken, string data, string cohortsId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}/custom", cohortsId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts/{0}/custom", cohortsId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -141,8 +141,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteCohorts(string accessToken, string cohortsId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/cohorts/{0}", cohortsId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/cohorts/{0}", cohortsId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 	}
 }

@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetEducationOrganizationsData : ServiceBase
+	public class EducationOrganizationDataService : ServiceBase
 	{
 		#region Read Methods
 
@@ -30,8 +30,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetEducationOrganizations(string accessToken)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/educationOrganizations");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -42,8 +42,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetEducationOrganizationById(string accessToken, string educationId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}", educationId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/educationOrganizations/{0}", educationId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -55,9 +55,9 @@ namespace inBloomApiLibrary
 		public JArray GetEducationOrganizationStaffEducationOrganizationAssociations(string accessToken, string educationId)
 		{
 			var apiEndPoint =
-				String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}/staffEducationOrgAssignmentAssociations",
+				String.Format(ApiHelper.BaseUrl + "/educationOrganizations/{0}/staffEducationOrgAssignmentAssociations",
 							  educationId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -70,9 +70,9 @@ namespace inBloomApiLibrary
 																						   string educationId)
 		{
 			var apiEndPoint =
-				String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}/staffEducationOrgAssignmentAssociations/staff",
+				String.Format(ApiHelper.BaseUrl + "/educationOrganizations/{0}/staffEducationOrgAssignmentAssociations/staff",
 							  educationId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -83,8 +83,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetEducationOrganizationCustom(string accessToken, string educationId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}/custom", educationId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/educationOrganizations/{0}/custom", educationId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -99,8 +99,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostEducationOrganizations(string accessToken, string data)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/educationOrganizations");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -111,8 +111,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutEducationOrganizations(string accessToken, string data, string educationId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}/custom", educationId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/educationOrganizations/{0}/custom", educationId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -123,8 +123,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteEducationOrganizations(string accessToken, string educationId)
 		{
-			var apiEndPoint = String.Format(CommonData.BaseUrl + "/educationOrganizations/{0}", educationId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			var apiEndPoint = String.Format(ApiHelper.BaseUrl + "/educationOrganizations/{0}", educationId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

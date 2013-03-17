@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetAssessmentsData : ServiceBase
+	public class AssessmentDataService : ServiceBase
 	{
 		#region POST
 
@@ -28,8 +28,8 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public string PostAssessments(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -37,8 +37,8 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public string PutAssessments(string accessToken, string data, string assessmentId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/custom", assessmentId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments/{0}/custom", assessmentId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -46,8 +46,8 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public string DeleteAssessments(string accessToken, string assessmentId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}", assessmentId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments/{0}", assessmentId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -57,8 +57,8 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public JArray GetAssessments(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -66,8 +66,8 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public JArray GetAssessmentLearningObjective(string accessToken, string assessmentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/learningObjectives", assessmentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments/{0}/learningObjectives", assessmentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -75,8 +75,8 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public JArray GetAssessmentLearningStandards(string accessToken, string assessmentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/learningStandards", assessmentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments/{0}/learningStandards", assessmentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -87,8 +87,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetAssessmentStudentAssessments(string accessToken, string assessmentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/studentAssessments", assessmentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments/{0}/studentAssessments", assessmentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -99,8 +99,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetAssessmentStudentAssessmentsStudents(string accessToken, string assessmentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/studentAssessments/students", assessmentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments/{0}/studentAssessments/students", assessmentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -111,8 +111,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetAssessmentCustom(string accessToken, string assessmentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/assessments/{0}/custom", assessmentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/assessments/{0}/custom", assessmentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace inBloomApiLibrary
 	/// </summary>
 	public class OAuth
 	{
-		private readonly CommonData _commonData = new CommonData();
+		private readonly ApiHelper _apiHelper = new ApiHelper();
 		private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
 		#region inBloom API Settings
@@ -83,7 +83,7 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public string GetAuthorizationUrl()
 		{
-			return string.Format(_commonData.ApiUrl + "/oauth/authorize?client_id={0}&redirect_uri={1}", _clientId, _redirectUrl);
+			return string.Format(_apiHelper.ApiUrl + "/oauth/authorize?client_id={0}&redirect_uri={1}", _clientId, _redirectUrl);
 		}
 
 		/// <summary>
@@ -106,7 +106,7 @@ namespace inBloomApiLibrary
 			try
 			{
 				// Construct API call to validate code
-				string sessionUrl = string.Format(_commonData.ApiUrl + "/oauth/token?client_id={0}&client_secret={1}&grant_type=authorization_code&redirect_uri={2}&code={3}", _clientId, _clientSecret, _redirectUrl, code);
+				string sessionUrl = string.Format(_apiHelper.ApiUrl + "/oauth/token?client_id={0}&client_secret={1}&grant_type=authorization_code&redirect_uri={2}&code={3}", _clientId, _clientSecret, _redirectUrl, code);
 
 				// Initialise REST Client
 				var restClient = new WebClient();
@@ -126,7 +126,7 @@ namespace inBloomApiLibrary
 					// Session.Add("access_token", access_token);
 					AccessToken = accessToken1;
 
-					var apiEndPoint = _commonData.ApiUrl + "/rest/system/session/check";
+					var apiEndPoint = _apiHelper.ApiUrl + "/rest/system/session/check";
 					var request = ApiClient.Request(apiEndPoint, AccessToken, RequestType.JsonObject);
 
 					if (request.ResponseObject != null)
@@ -139,7 +139,7 @@ namespace inBloomApiLibrary
 						}
 					}
 
-					apiEndPoint = _commonData.ApiUrl + "/rest/v1.1/home";
+					apiEndPoint = _apiHelper.ApiUrl + "/rest/v1.1/home";
 					request = ApiClient.Request(apiEndPoint, AccessToken, RequestType.JsonObject);
 
 					if (request.ResponseObject != null)

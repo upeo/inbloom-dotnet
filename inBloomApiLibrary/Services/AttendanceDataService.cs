@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetAttendancesData : ServiceBase
+	public class AttendanceDataService : ServiceBase
 	{
 		/// <summary>
 		///     Gets Student Attendance Details
@@ -28,8 +28,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetAttendances(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/attendances");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/attendances");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -40,8 +40,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetAttendanceCustom(string accessToken, string attendanceId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/attendances/{0}/custom", attendanceId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/attendances/{0}/custom", attendanceId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -51,8 +51,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostAttendance(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/attendances");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/attendances");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -62,8 +62,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutAttendance(string accessToken, string data, string attendanceId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/attendances/{0}/custom", attendanceId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/attendances/{0}/custom", attendanceId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -73,8 +73,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteAttendance(string accessToken, string attendanceId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/attendances/{0}/custom", attendanceId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/attendances/{0}/custom", attendanceId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 	}
 }

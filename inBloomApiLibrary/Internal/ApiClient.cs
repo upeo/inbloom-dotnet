@@ -24,7 +24,7 @@ namespace inBloomApiLibrary
 	/// <summary>
 	/// API Client used for executing API requests and getting the response
 	/// </summary>
-	public static class ApiClient
+	internal static class ApiClient
 	{
 		private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 

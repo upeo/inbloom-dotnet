@@ -23,7 +23,7 @@ namespace inBloomApiLibrary
 	/// <summary>
 	///     Competency Level Descriptor Service
 	/// </summary>
-	public class GetCompetencyLevelDescriptorData : ServiceBase
+	public class CompetencyLevelDescriptorDataService : ServiceBase
 	{
 		#region CompetencyLevelDescriptorTypes CRUD
 
@@ -32,8 +32,8 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public string PostCompetencyLevelDescriptorTypes(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptorTypes");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -43,8 +43,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCompetencyLevelDescriptorTypes(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptorTypes");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -55,8 +55,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCompetencyLevelDescriptorTypeById(string accessToken, string competencyId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes/{0}", competencyId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptorTypes/{0}", competencyId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -67,8 +67,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCompetencyLevelDescriptorTypeCustom(string accessToken, string competencyId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes/{0}/custom", competencyId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptorTypes/{0}/custom", competencyId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -76,8 +76,8 @@ namespace inBloomApiLibrary
 		/// </summary>
 		public string PutCompetencyLevelDescriptorTypes(string accessToken, string data, string competencyId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes/{0}/custom", competencyId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptorTypes/{0}/custom", competencyId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -88,8 +88,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteCompetencyLevelDescriptorTypes(string accessToken, string competencyId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptorTypes/{0}", competencyId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptorTypes/{0}", competencyId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -103,8 +103,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostCompetencyLevelDescriptor(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptor");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -114,8 +114,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCompetencyLevelDescriptor(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptor");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -126,8 +126,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCompetencyLevelDescriptorById(string accessToken, string competencyId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor/{0}", competencyId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptor/{0}", competencyId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -138,8 +138,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetCompetencyLevelDescriptorCustom(string accessToken, string competencyId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor/{0}/custom", competencyId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptor/{0}/custom", competencyId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -149,8 +149,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutCompetencyLevelDescriptor(string accessToken, string data, string competencyId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor/{0}/custom", competencyId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptor/{0}/custom", competencyId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -160,8 +160,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteCompetencyLevelDescriptor(string accessToken, string competencyId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/competencyLevelDescriptor/{0}", competencyId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/competencyLevelDescriptor/{0}", competencyId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

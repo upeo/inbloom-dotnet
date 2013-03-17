@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetParentsData : ServiceBase
+	public class ParentDataService : ServiceBase
 	{
 		/// <summary>
 		///     Gets parents details.
@@ -28,8 +28,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetParents(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/parents");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -40,8 +40,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetParentById(string accessToken, string parentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}", parentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/parents/{0}", parentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -52,8 +52,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetParentCustom(string accessToken, string parentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}/custom", parentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/parents/{0}/custom", parentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -64,8 +64,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetParentStudentParentAssociations(string accessToken, string parentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}/studentParentAssociations", parentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/parents/{0}/studentParentAssociations", parentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -76,8 +76,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetParentStudentParentAssociationStudents(string accessToken, string parentsId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}/studentParentAssociations/students", parentsId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/parents/{0}/studentParentAssociations/students", parentsId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete
@@ -89,8 +89,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostParents(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/parents");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -100,8 +100,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutParents(string accessToken, string data, string parentId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}/custom", parentId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/parents/{0}/custom", parentId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -111,8 +111,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteParents(string accessToken, string parentId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/parents/{0}", parentId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/parents/{0}", parentId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

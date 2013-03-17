@@ -41,7 +41,7 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
         {
             try
             {
-                var service = new GetHomeData();
+                var service = new HomeDataService();
                 service.LogOut(Session["access_token"].ToString());
             }
             catch (Exception)

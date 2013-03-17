@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetStaffData : ServiceBase
+	public class StaffDataService : ServiceBase
 	{
 		/// <summary>
 		///     Gets staff details.
@@ -28,8 +28,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaff(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -40,8 +40,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffCustom(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}/custom", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}/custom", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -52,8 +52,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffStaffCohortAssociations(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}/staffCohortAssociations", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}/staffCohortAssociations", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -64,8 +64,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffStaffCohortAssociationCohorts(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}/staffCohortAssociations/cohorts", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}/staffCohortAssociations/cohorts", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -76,8 +76,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffStaffEducationOrganizationAssignmentAssociations(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}/staffEducationOrgAssignmentAssociations", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}/staffEducationOrgAssignmentAssociations", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -88,8 +88,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffStaffEducationOrganizationAssignmentAssociationEducationOrganizations(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}/staffEducationOrgAssignmentAssociations/educationOrganizations", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}/staffEducationOrgAssignmentAssociations/educationOrganizations", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -100,8 +100,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffStaffProgramAssociations(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}/staffProgramAssociations", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}/staffProgramAssociations", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -112,8 +112,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffStaffProgramAssociationPrograms(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}/staffProgramAssociations/programs", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}/staffProgramAssociations/programs", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -123,8 +123,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffCohortAssociations(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffCohortAssociations");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffCohortAssociations");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -135,8 +135,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffCohortAssociationCustom(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffCohortAssociations/{0}/custom", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffCohortAssociations/{0}/custom", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -147,8 +147,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffCohortAssociationById(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffCohortAssociations/{0}", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffCohortAssociations/{0}", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -159,8 +159,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffCohortAssociationCohorts(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffCohortAssociations/{0}/cohorts", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffCohortAssociations/{0}/cohorts", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -171,8 +171,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffCohortAssociationStaff(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffCohortAssociations/{0}/staff", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffCohortAssociations/{0}/staff", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -182,8 +182,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffEducationOrganizationAssignmentAssociations(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffEducationOrgAssignmentAssociations");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffEducationOrgAssignmentAssociations");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -194,8 +194,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffEducationOrganizationAssignmentAssociationCustom(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}/custom", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}/custom", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -206,8 +206,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffEducationOrganizationAssignmentAssociationById(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -218,8 +218,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffEducationOrganizationAssignmentAssociationEducationOrganizations(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}/educationOrganizations", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}/educationOrganizations", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -230,8 +230,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffEducationOrganizationAssignmentAssociationStaff(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}/staff", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}/staff", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -241,8 +241,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffProgramAssociations(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -253,8 +253,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffProgramAssociationCustom(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations/{0}/custom", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations/{0}/custom", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -265,8 +265,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffProgramAssociationByProgramId(string accessToken, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations/{0}", programId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations/{0}", programId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -277,8 +277,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffProgramAssociationById(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations/{0}", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations/{0}", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -289,8 +289,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffProgramAssociationPrograms(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations/{0}/programs", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations/{0}/programs", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -301,8 +301,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStaffProgramAssociationStaff(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations/{0}/staff", staffId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations/{0}/staff", staffId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods
@@ -315,8 +315,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostStaffProgramAssociations(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -328,8 +328,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutStaffProgramAssociations(string accessToken, string data, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations/{0}/custom", staffId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations/{0}/custom", staffId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -340,8 +340,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteStaffProgramAssociations(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffProgramAssociations/{0}", staffId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffProgramAssociations/{0}", staffId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -356,8 +356,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostStaffEducationOrgAssignmentAssociations(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffEducationOrgAssignmentAssociations");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffEducationOrgAssignmentAssociations");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -369,8 +369,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutStaffEducationOrgAssignmentAssociations(string accessToken, string data, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}/custom", staffId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}/custom", staffId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -381,8 +381,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteStaffEducationOrgAssignmentAssociations(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}", staffId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffEducationOrgAssignmentAssociations/{0}", staffId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -397,8 +397,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostStaffCohortAssociations(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffCohortAssociations");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffCohortAssociations");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -410,8 +410,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutStaffCohortAssociations(string accessToken, string data, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffCohortAssociations/{0}/custom", staffId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffCohortAssociations/{0}/custom", staffId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -422,8 +422,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteStaffCohortAssociations(string accessToken, string staffId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staffCohortAssociations/{0}", staffId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staffCohortAssociations/{0}", staffId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -438,8 +438,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostStaff(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -451,8 +451,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string Putstaff(string accessToken, string data, string sessionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}/custom", sessionId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}/custom", sessionId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -463,8 +463,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string Deletestaff(string accessToken, string sessionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/staff/{0}", sessionId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/staff/{0}", sessionId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

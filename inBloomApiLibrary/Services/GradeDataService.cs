@@ -20,7 +20,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetGradesData : ServiceBase
+	public class GradeDataService : ServiceBase
 	{
 		#region Get Methods
 
@@ -31,8 +31,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradeBookEntries(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradebookEntries");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradebookEntries");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -43,8 +43,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradeBookEntrieById(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradebookEntries/{0}", gradeId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradebookEntries/{0}", gradeId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -55,8 +55,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradeBookEntrieCustom(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradebookEntries/{0}/custom", gradeId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradebookEntries/{0}/custom", gradeId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -71,8 +71,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostGradebookEntries(string accessToken, string Data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradebookEntries");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, Data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradebookEntries");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, Data);
 		}
 
 		/// <summary>
@@ -83,8 +83,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutGradebookEntries(string accessToken, string Data, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradebookEntries/{0}/custom", gradeId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, Data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradebookEntries/{0}/custom", gradeId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, Data);
 		}
 
 		/// <summary>
@@ -95,8 +95,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteGradebookEntries(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradebookEntries/{0}", gradeId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradebookEntries/{0}", gradeId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -108,8 +108,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGrades(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/grades");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/grades");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -120,8 +120,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradeCustom(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/grades/{0}/custom", gradeId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/grades/{0}/custom", gradeId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -131,8 +131,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradingPeriods(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradingPeriods");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradingPeriods");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -143,8 +143,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradingPeriodGrades(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradingPeriods/{0}/grades", gradeId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradingPeriods/{0}/grades", gradeId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -155,8 +155,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradingPeriodReportCards(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradingPeriods/{0}/reportCards", gradeId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradingPeriods/{0}/reportCards", gradeId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -167,8 +167,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradingPeriodById(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradingPeriods/{0}", gradeId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradingPeriods/{0}", gradeId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -179,29 +179,29 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetGradingPeriodCustom(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradingPeriods/{0}/custom", gradeId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradingPeriods/{0}/custom", gradeId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods gradingPeriods
 
 		public string PostGradingPeriods(string accessToken, string Data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradingPeriods");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, Data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradingPeriods");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, Data);
 		}
 
 		public string PutGradingPeriods(string accessToken, string Data, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradingPeriods/{0}/custom", gradeId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, Data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradingPeriods/{0}/custom", gradeId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, Data);
 		}
 
 
 		public string DeleteGradingPeriods(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/gradingPeriods/{0}", gradeId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/gradingPeriods/{0}", gradeId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -215,8 +215,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostGrades(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/grades");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/grades");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -226,8 +226,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutGrades(string accessToken, string data, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/grades/{0}/custom", gradeId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/grades/{0}/custom", gradeId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -237,8 +237,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteGrades(string accessToken, string gradeId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/grades/{0}", gradeId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/grades/{0}", gradeId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

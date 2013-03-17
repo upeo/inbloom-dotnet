@@ -20,7 +20,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetProgramsData : ServiceBase
+	public class ProgramDataService : ServiceBase
 	{
 		/// <summary>
 		///     Gets program details.
@@ -29,8 +29,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetPrograms(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -41,8 +41,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetProgramById(string accessToken, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}", programId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs/{0}", programId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -53,8 +53,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetProgramCustom(string accessToken, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/custom", programId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs/{0}/custom", programId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -65,8 +65,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetProgramStaffProgramAssociations(string accessToken, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/staffProgramAssociations", programId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs/{0}/staffProgramAssociations", programId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -77,8 +77,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetProgramStaffProgramAssociationStaff(string accessToken, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/staffProgramAssociations/staff", programId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs/{0}/staffProgramAssociations/staff", programId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -89,8 +89,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetProgramStudentProgramAssociations(string accessToken, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/studentProgramAssociations", programId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs/{0}/studentProgramAssociations", programId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -101,8 +101,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetProgramStudentProgramAssociationStudents(string accessToken, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/studentProgramAssociations/students", programId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs/{0}/studentProgramAssociations/students", programId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods
@@ -114,8 +114,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostPrograms(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -125,8 +125,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutPrograms(string accessToken, string data, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}/custom", programId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs/{0}/custom", programId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -136,8 +136,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeletePrograms(string accessToken, string programId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/programs/{0}", programId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/programs/{0}", programId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

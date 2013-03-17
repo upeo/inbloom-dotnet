@@ -26,25 +26,25 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
 	{
 		#region Declare Services
 
-		private readonly GetAssessmentsData _assessementsService = new GetAssessmentsData();
-		private readonly GetAttendancesData _attendanceService = new GetAttendancesData();
-		private readonly GetCohortsData _cohortsService = new GetCohortsData();
-		private readonly GetCompetencyLevelDescriptorData _competencyLevelDescriptorDataService = new GetCompetencyLevelDescriptorData();
-		private readonly GetCoursesData _courseDataService = new GetCoursesData();
-		private readonly GetDisciplineData _disciplineService = new GetDisciplineData();
-		private readonly GetEducationOrganizationsData _educationOrganizationsService = new GetEducationOrganizationsData();
-		private readonly GetGradesData _gradeService = new GetGradesData();
-		private readonly GetHomeData _homeService = new GetHomeData();
-		private readonly GetLearningObjectivesData _learningObjectivesService = new GetLearningObjectivesData();
-		private readonly GetParentsData _parentService = new GetParentsData();
-		private readonly GetProgramsData _programService = new GetProgramsData();
-		private readonly GetReportCardsData _reportCardService = new GetReportCardsData();
-		private readonly GetSchoolsData _schoolService = new GetSchoolsData();
-		private readonly GetSectionsData _sectionService = new GetSectionsData();
-		private readonly GetSessionsData _sessionService = new GetSessionsData();
-		private readonly GetStaffData _staffService = new GetStaffData();
-		private readonly GetStudentsData _studentService = new GetStudentsData();
-		private readonly GetTeachersData _teacherService = new GetTeachersData();
+		private readonly AssessmentDataService _assessementsService = new AssessmentDataService();
+		private readonly AttendanceDataService _attendanceService = new AttendanceDataService();
+		private readonly CohortDataService _cohortsService = new CohortDataService();
+		private readonly CompetencyLevelDescriptorDataService _competencyLevelDescriptorDataServiceService = new CompetencyLevelDescriptorDataService();
+		private readonly CourseDataService _courseDataService = new CourseDataService();
+		private readonly DisciplineDataService _disciplineService = new DisciplineDataService();
+		private readonly EducationOrganizationDataService _educationOrganizationDataService = new EducationOrganizationDataService();
+		private readonly GradeDataService _gradeService = new GradeDataService();
+		private readonly HomeDataService _homeService = new HomeDataService();
+		private readonly LearningObjectiveDataService _learningObjectiveDataService = new LearningObjectiveDataService();
+		private readonly ParentDataService _parentService = new ParentDataService();
+		private readonly ProgramDataService _programService = new ProgramDataService();
+		private readonly ReportCardDataService _reportCardDataService = new ReportCardDataService();
+		private readonly SchoolDataService _schoolService = new SchoolDataService();
+		private readonly SectionDataService _sectionService = new SectionDataService();
+		private readonly SessionDataService _sessionService = new SessionDataService();
+		private readonly StaffDataService _staffService = new StaffDataService();
+		private readonly StudentDataService _studentService = new StudentDataService();
+		private readonly TeacherDataService _teacherService = new TeacherDataService();
 
 		#endregion
 
@@ -608,56 +608,56 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
 
 		private void GetCompetencyLevelDescriptor()
 		{
-			sectionsGridView.DataSource = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptor(AccessToken);
+			sectionsGridView.DataSource = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptor(AccessToken);
 			sectionsGridView.DataBind();
 		}
 
 		private void GetCompetencyLevelDescriptorByID()
 		{
-			JArray lst = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptor(AccessToken);
+			JArray lst = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptor(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptorById(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptorById(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetCompetencyLevelDescriptorCustom()
 		{
-			JArray lst = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptor(AccessToken);
+			JArray lst = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptor(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptorCustom(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptorCustom(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetCompetencyLevelDescriptorTypes()
 		{
-			sectionsGridView.DataSource = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptorTypes(AccessToken);
+			sectionsGridView.DataSource = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptorTypes(AccessToken);
 			sectionsGridView.DataBind();
 		}
 
 		private void GetCompetencyLevelDescriptorTypesByID()
 		{
-			JArray lst = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptorTypes(AccessToken);
+			JArray lst = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptorTypes(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptorTypeById(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptorTypeById(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetCompetencyLevelDescriptorTypesCustom()
 		{
-			JArray lst = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptorTypes(AccessToken);
+			JArray lst = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptorTypes(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _competencyLevelDescriptorDataService.GetCompetencyLevelDescriptorTypeCustom(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _competencyLevelDescriptorDataServiceService.GetCompetencyLevelDescriptorTypeCustom(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
@@ -925,50 +925,50 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
 
 		private void GetEducationOrganizations()
 		{
-			sectionsGridView.DataSource = _educationOrganizationsService.GetEducationOrganizations(AccessToken);
+			sectionsGridView.DataSource = _educationOrganizationDataService.GetEducationOrganizations(AccessToken);
 			sectionsGridView.DataBind();
 		}
 
 		private void GetEducationOrganizationsByID()
 		{
-			JArray lst = _educationOrganizationsService.GetEducationOrganizations(AccessToken);
+			JArray lst = _educationOrganizationDataService.GetEducationOrganizations(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _educationOrganizationsService.GetEducationOrganizationById(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _educationOrganizationDataService.GetEducationOrganizationById(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetEduOrgStaffEduOrgAssociations()
 		{
-			JArray lst = _educationOrganizationsService.GetEducationOrganizations(AccessToken);
+			JArray lst = _educationOrganizationDataService.GetEducationOrganizations(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _educationOrganizationsService.GetEducationOrganizationStaffEducationOrganizationAssociations(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _educationOrganizationDataService.GetEducationOrganizationStaffEducationOrganizationAssociations(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetEduOrgStaffEduOrgAssociationsByStaff()
 		{
-			JArray lst = _educationOrganizationsService.GetEducationOrganizations(AccessToken);
+			JArray lst = _educationOrganizationDataService.GetEducationOrganizations(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _educationOrganizationsService.GetEducationOrganizationStaffEducationOrganizationAssociationByStaff(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _educationOrganizationDataService.GetEducationOrganizationStaffEducationOrganizationAssociationByStaff(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetEducationOrganizationsCustom()
 		{
-			JArray lst = _educationOrganizationsService.GetEducationOrganizations(AccessToken);
+			JArray lst = _educationOrganizationDataService.GetEducationOrganizations(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _educationOrganizationsService.GetEducationOrganizationCustom(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _educationOrganizationDataService.GetEducationOrganizationCustom(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
@@ -1083,100 +1083,100 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
 
 		private void GetLearningObjectives()
 		{
-			sectionsGridView.DataSource = _learningObjectivesService.GetLearningObjectives(AccessToken);
+			sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningObjectives(AccessToken);
 			sectionsGridView.DataBind();
 		}
 
 		private void GetLearningObjectivesByID()
 		{
-			JArray lst = _learningObjectivesService.GetLearningObjectives(AccessToken);
+			JArray lst = _learningObjectiveDataService.GetLearningObjectives(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _learningObjectivesService.GetLearningObjectiveById(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningObjectiveById(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetLearningObjectivesCustom()
 		{
-			JArray lst = _learningObjectivesService.GetLearningObjectives(AccessToken);
+			JArray lst = _learningObjectiveDataService.GetLearningObjectives(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _learningObjectivesService.GetLearningObjectiveCustom(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningObjectiveCustom(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetLearningObjLearningStandards()
 		{
-			JArray lst = _learningObjectivesService.GetLearningObjectives(AccessToken);
+			JArray lst = _learningObjectiveDataService.GetLearningObjectives(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _learningObjectivesService.GetLearningObjectiveLearningStandards(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningObjectiveLearningStandards(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetLearningObjParentLearningObjectives()
 		{
-			JArray lst = _learningObjectivesService.GetLearningObjectives(AccessToken);
+			JArray lst = _learningObjectiveDataService.GetLearningObjectives(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _learningObjectivesService.GetLearningObjectiveParentLearningObjectives(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningObjectiveParentLearningObjectives(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetLearningObjStudentCompetencies()
 		{
-			JArray lst = _learningObjectivesService.GetLearningObjectives(AccessToken);
+			JArray lst = _learningObjectiveDataService.GetLearningObjectives(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _learningObjectivesService.GetLearningObjectiveStudentCompetencies(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningObjectiveStudentCompetencies(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetLearningObjChildLearningObjectives()
 		{
-			JArray lst = _learningObjectivesService.GetLearningObjectives(AccessToken);
+			JArray lst = _learningObjectiveDataService.GetLearningObjectives(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _learningObjectivesService.GetLearningObjectiveChildLearningObjectives(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningObjectiveChildLearningObjectives(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetLearningStandards()
 		{
-			sectionsGridView.DataSource = _learningObjectivesService.GetLearningStandards(AccessToken);
+			sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningStandards(AccessToken);
 			sectionsGridView.DataBind();
 		}
 
 		private void GetLearningStandardsByID()
 		{
-			JArray lst = _learningObjectivesService.GetLearningStandards(AccessToken);
+			JArray lst = _learningObjectiveDataService.GetLearningStandards(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _learningObjectivesService.GetLearningStandardById(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningStandardById(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
 
 		private void GetLearningStandardsCustom()
 		{
-			JArray lst = _learningObjectivesService.GetLearningStandards(AccessToken);
+			JArray lst = _learningObjectiveDataService.GetLearningStandards(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _learningObjectivesService.GetLearningStandardCustom(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _learningObjectiveDataService.GetLearningStandardCustom(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}
@@ -1305,17 +1305,17 @@ namespace Upeo.inBloomApiLibrary.TestWebApp
 
 		private void GetReportCards()
 		{
-			sectionsGridView.DataSource = _reportCardService.GetReportCards(AccessToken);
+			sectionsGridView.DataSource = _reportCardDataService.GetReportCards(AccessToken);
 			sectionsGridView.DataBind();
 		}
 
 		private void GetReportCardsCustom()
 		{
-			JArray lst = _reportCardService.GetReportCards(AccessToken);
+			JArray lst = _reportCardDataService.GetReportCards(AccessToken);
 			if (lst.Count > 0)
 			{
 				JToken obj = lst[0];
-				sectionsGridView.DataSource = _reportCardService.GetReportCardCustom(AccessToken, obj["id"].ToString());
+				sectionsGridView.DataSource = _reportCardDataService.GetReportCardCustom(AccessToken, obj["id"].ToString());
 				sectionsGridView.DataBind();
 			}
 		}

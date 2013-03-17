@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetSessionsData : ServiceBase
+	public class SessionDataService : ServiceBase
 	{
 		#region Retrieve Methods
 
@@ -30,8 +30,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSessions(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sessions");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -42,8 +42,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSessionCustom(string accessToken, string userId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}/custom", userId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sessions/{0}/custom", userId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -54,8 +54,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSessionById(string accessToken, string sessionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}", sessionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sessions/{0}", sessionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -66,8 +66,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSessionCourseOfferings(string accessToken, string sessionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}/courseOfferings", sessionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sessions/{0}/courseOfferings", sessionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -78,8 +78,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSessionCourseOfferingCourses(string accessToken, string sessionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}/courseOfferings/courses", sessionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sessions/{0}/courseOfferings/courses", sessionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#endregion
@@ -94,8 +94,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostSessions(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sessions");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -107,8 +107,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutSessions(string accessToken, string data, string sessionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}/custom", sessionId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sessions/{0}/custom", sessionId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -119,8 +119,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteSessions(string accessToken, string sessionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sessions/{0}", sessionId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sessions/{0}", sessionId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetReportCardsData : ServiceBase
+	public class ReportCardDataService : ServiceBase
 	{
 		/// <summary>
 		///     Gets report cards details.
@@ -28,8 +28,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetReportCards(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/reportCards");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/reportCards");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -40,8 +40,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetReportCardCustom(string accessToken, string reportId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/reportCards/{0}/custom", reportId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/reportCards/{0}/custom", reportId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods
@@ -54,8 +54,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostReportCards(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/reportCards");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/reportCards");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -67,8 +67,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutReportCards(string accessToken, string data, string reportId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/reportCards/{0}/custom", reportId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/reportCards/{0}/custom", reportId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -79,8 +79,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteReportCards(string accessToken, string reportId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/reportCards/{0}", reportId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/reportCards/{0}", reportId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

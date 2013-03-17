@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetHomeData : ServiceBase
+	public class HomeDataService : ServiceBase
 	{
 		/// <summary>
 		///     Gets Home links
@@ -28,8 +28,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetHome(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/home");
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/home");
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -39,8 +39,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string LogOut(string accessToken)
 		{
-			string apiEndPoint = String.Format(CommonData.ApiUrl + "/rest/system/session/logout");
-			return CommonData.CallApiWithParameter(accessToken, apiEndPoint);
+			string apiEndPoint = String.Format(ApiHelper.ApiUrl + "/rest/system/session/logout");
+			return ApiHelper.CallApiWithParameter(accessToken, apiEndPoint);
 		}
 	}
 }

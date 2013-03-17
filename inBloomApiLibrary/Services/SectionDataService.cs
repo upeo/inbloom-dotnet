@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace inBloomApiLibrary
 {
-	public class GetSectionsData : ServiceBase
+	public class SectionDataService : ServiceBase
 	{
 		/// <summary>
 		///     Gets sections details.
@@ -29,8 +29,8 @@ namespace inBloomApiLibrary
 		/// <returns>Gets Sections Data</returns>
 		public JArray GetSections(string accessToken, string userId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections", userId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections", userId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -41,8 +41,8 @@ namespace inBloomApiLibrary
 		/// <returns>Gets Sections Data</returns>
 		public JArray GetSectionCustom(string accessToken, string sectionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/custom", sectionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections/{0}/custom", sectionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -53,8 +53,8 @@ namespace inBloomApiLibrary
 		/// <returns>Gets Sections Data</returns>
 		public JArray GetSectionById(string accessToken, string sectionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}", sectionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections/{0}", sectionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -65,8 +65,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSectionStudentAssociations(string accessToken, string sectionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/studentSectionAssociations", sectionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections/{0}/studentSectionAssociations", sectionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -77,8 +77,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSectionStudentAssociationStudentList(string accessToken, string sectionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/studentSectionAssociations/students", sectionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections/{0}/studentSectionAssociations/students", sectionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -89,8 +89,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSectionTeacherAssociations(string accessToken, string sectionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/teacherSectionAssociations", sectionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections/{0}/teacherSectionAssociations", sectionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
@@ -101,8 +101,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetSectionTeacherAssociationTeacherList(string accessToken, string sectionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/teacherSectionAssociations/teachers", sectionId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections/{0}/teacherSectionAssociations/teachers", sectionId);
+			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		#region Create/Update/Delete Methods
@@ -115,8 +115,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PostSections(string accessToken, string data)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections");
-			return CommonData.CallApiForPost(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections");
+			return ApiHelper.CallApiForPost(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -128,8 +128,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string PutSections(string accessToken, string data, string sectionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}/custom", sectionId);
-			return CommonData.CallApiForPut(apiEndPoint, accessToken, data);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections/{0}/custom", sectionId);
+			return ApiHelper.CallApiForPut(apiEndPoint, accessToken, data);
 		}
 
 		/// <summary>
@@ -140,8 +140,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public string DeleteSections(string accessToken, string sectionId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/sections/{0}", sectionId);
-			return CommonData.CallApiForDelete(apiEndPoint, accessToken);
+			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/sections/{0}", sectionId);
+			return ApiHelper.CallApiForDelete(apiEndPoint, accessToken);
 		}
 
 		#endregion

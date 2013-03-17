@@ -21,6 +21,6 @@ namespace inBloomApiLibrary
 	/// </summary>
 	public abstract class ServiceBase
 	{
-		internal readonly CommonData CommonData = new CommonData();
+		internal readonly ApiHelper ApiHelper = new ApiHelper();
 	}
 }
