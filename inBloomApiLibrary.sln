@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "inBloomApiLibrary", "inBloo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebApp", "TestWebApp\TestWebApp.csproj", "{81C91EF3-7804-43E1-BB18-68B599782775}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWebApp", "SampleWebApp\SampleWebApp.csproj", "{A197B788-B918-459E-B121-2CBD851BD3BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{81C91EF3-7804-43E1-BB18-68B599782775}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C91EF3-7804-43E1-BB18-68B599782775}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C91EF3-7804-43E1-BB18-68B599782775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A197B788-B918-459E-B121-2CBD851BD3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A197B788-B918-459E-B121-2CBD851BD3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A197B788-B918-459E-B121-2CBD851BD3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A197B788-B918-459E-B121-2CBD851BD3BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

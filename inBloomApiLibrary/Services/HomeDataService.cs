@@ -40,7 +40,7 @@ namespace inBloomApiLibrary
 		public string LogOut(string accessToken)
 		{
 			string apiEndPoint = String.Format(ApiHelper.ApiUrl + "/rest/system/session/logout");
-			return ApiHelper.CallApiWithParameter(accessToken, apiEndPoint);
+			return ApiHelper.CallApiWithParameter(apiEndPoint, accessToken);
 		}
 	}
 }
