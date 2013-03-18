@@ -15,9 +15,11 @@
  */
 
 using System.Web.Mvc;
+using SampleWebApp.Components;
 
 namespace SampleWebApp.Controllers
 {
+    [RequiresAuthentication]
     public class StudentsController : Controller
     {
         public ActionResult Index()
