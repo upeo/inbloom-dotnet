@@ -117,6 +117,7 @@
     <Compile Include="Controllers\AuthorizeController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -166,6 +167,7 @@
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
+    <Content Include="Views\Debug\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
