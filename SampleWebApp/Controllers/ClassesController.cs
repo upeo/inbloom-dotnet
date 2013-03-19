@@ -16,17 +16,17 @@
 
 using System.Web.Mvc;
 using SampleWebApp.Components;
+using SampleWebApp.Components.Attributes;
 
 namespace SampleWebApp.Controllers
 {
     [RequiresAuthentication]
+    [SelectedNavigation("classes")]
     public class ClassesController : Controller
     {
         public ActionResult Index()
         {
             ViewBag.Title = "Classes";
-            ViewBag.SelectedNavClass = "classes";
-
             return View();
         }
     }

@@ -16,18 +16,36 @@
 
 using System.Web.Mvc;
 using SampleWebApp.Components;
+using SampleWebApp.Components.Attributes;
+using SampleWebApp.Models;
+using inBloomApiLibrary;
 
 namespace SampleWebApp.Controllers
 {
     [RequiresAuthentication]
+    [SelectedNavigation("students")]
     public class StudentsController : Controller
     {
+        private readonly StudentDataService _studentDataService = new StudentDataService();
+
         public ActionResult Index()
         {
             ViewBag.Title = "Students";
-            ViewBag.SelectedNavClass = "students";
 
-            return View();
+            var students = _studentDataService.GetStudents(SessionInfo.Current.AccessToken);
+            var model = new StudentListViewModel {Students = students};
+
+            return View(model);
+        }
+
+        public ActionResult Detail(string studentId)
+        {
+            ViewBag.Title = "Student Detail";
+
+            var student = _studentDataService.GetStudentById(SessionInfo.Current.AccessToken, studentId)[0];
+            var model = new StudentDetailViewModel {Student = student};
+
+            return View(model);
         }
     }
 }

@@ -112,6 +112,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Attributes\SelectedNavigation.cs" />
     <Compile Include="Components\Attributes\RequiresAuthentication.cs" />
     <Compile Include="Components\SessionInfo.cs" />
     <Compile Include="Controllers\AuthorizeController.cs" />
@@ -123,6 +124,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentDetailViewModel.cs" />
+    <Compile Include="Models\StudentListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -168,6 +170,7 @@
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Debug\Index.cshtml" />
+    <Content Include="Views\Students\Detail.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

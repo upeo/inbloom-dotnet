@@ -1,1 +1,11 @@
-﻿<h1>Students</h1>
+﻿@model SampleWebApp.Models.StudentListViewModel
+
+<h1>Students</h1>
+
+<p>The students in your class are:</p>
+<ul>
+@foreach (dynamic student in Model.Students)
+{
+	<li><a href="@Url.Action("Detail", "Students", new { Id = student.id })">@student.name.firstName @student.name.lastSurname</a></li>
+}
+</ul>
