@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using System.Linq;
 using System.Web.Mvc;
 using SampleWebApp.Components;
 using SampleWebApp.Components.Attributes;
@@ -42,7 +43,7 @@ namespace SampleWebApp.Controllers
         {
             ViewBag.Title = "Student Detail";
 
-            var student = _studentDataService.GetStudentById(SessionInfo.Current.AccessToken, studentId)[0];
+            var student = _studentDataService.GetStudentById(SessionInfo.Current.AccessToken, studentId).FirstOrDefault();
             var model = new StudentDetailViewModel {Student = student};
 
             return View(model);
