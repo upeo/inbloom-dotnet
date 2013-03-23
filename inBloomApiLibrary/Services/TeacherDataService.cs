@@ -24,6 +24,18 @@ namespace inBloomApiLibrary
 		#region Teachers
 
 		/// <summary>
+		///     Get a teacher by their ID
+		/// </summary>
+		/// <param name="accessToken"></param>
+		/// <param name="teacherId"></param>
+		/// <returns></returns>
+		public JArray GetTeacherById(string accessToken, string teacherId)
+		{
+			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teachers/{0}", teacherId);
+			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+		}
+
+		/// <summary>
 		///     Gets teachers details.
 		/// </summary>
 		/// <param name="accessToken"></param>
