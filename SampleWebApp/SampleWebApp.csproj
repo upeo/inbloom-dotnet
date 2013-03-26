@@ -168,7 +168,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Debug\Index.cshtml" />
     <Content Include="Views\Students\Detail.cshtml" />
   </ItemGroup>
