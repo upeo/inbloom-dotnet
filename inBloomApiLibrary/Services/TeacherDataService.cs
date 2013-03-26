@@ -31,8 +31,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetTeacherById(string accessToken, string teacherId)
 		{
-			string apiEndPoint = String.Format(CommonData.BaseUrl + "/teachers/{0}", teacherId);
-			return CommonData.CallApiForGet(apiEndPoint, accessToken);
+            string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/teachers/{0}", teacherId);
+            return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
 		/// <summary>
