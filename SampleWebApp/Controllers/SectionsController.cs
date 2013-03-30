@@ -27,7 +27,7 @@ namespace SampleWebApp.Controllers
     [SelectedNavigation("sections")]
     public class SectionsController : Controller
     {
-        public ActionResult Index(string sectionId)
+        public ActionResult Index()
         {
             ViewBag.Title = "Classes";
 
@@ -37,6 +37,25 @@ namespace SampleWebApp.Controllers
             var model = new SectionListViewModel {Sections = sections};
 
             return View(model);
+        }
+
+        public ActionResult GetStudents(string sectionId)
+        {
+            var sectionService = new SectionDataService();
+
+            var sb = new StringBuilder();
+            sb.Append("<ul>");
+
+            dynamic studentsData = sectionService.GetSectionStudentAssociationStudentList(SessionInfo.Current.AccessToken, sectionId);
+
+            foreach (var student in studentsData)
+            {
+                sb.AppendFormat("<li>{0} {1}</li>", student.name.firstName, student.name.lastSurname);
+            }
+
+            sb.Append("</ul>");
+
+            return Content(sb.ToString());
         }
     }
 }
