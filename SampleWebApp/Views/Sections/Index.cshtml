@@ -1,0 +1,29 @@
+﻿@model SampleWebApp.Models.SectionListViewModel
+
+@{
+	ViewBag.Title = "Sections";
+}
+
+<h2>Sections</h2>
+
+@{
+	<h4>Found @Model.Sections.Count sections</h4>
+}
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Medium</th>
+	</thead>
+	@{
+		foreach (dynamic section in Model.Sections)
+		{
+			<tr>
+				<td>@(section.id)</td>
+				<td>@(section.uniqueSectionCode)</td>
+				<td>@(section.mediumOfInstruction)</td>
+			</tr>
+		}
+	}
+</table>

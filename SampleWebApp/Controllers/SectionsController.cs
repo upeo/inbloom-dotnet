@@ -14,20 +14,29 @@
  * limitations under the License.
  */
 
+using System.Text;
 using System.Web.Mvc;
 using SampleWebApp.Components;
 using SampleWebApp.Components.Attributes;
+using SampleWebApp.Models;
+using inBloomApiLibrary;
 
 namespace SampleWebApp.Controllers
 {
     [RequiresAuthentication]
-    [SelectedNavigation("classes")]
-    public class ClassesController : Controller
+    [SelectedNavigation("sections")]
+    public class SectionsController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string sectionId)
         {
             ViewBag.Title = "Classes";
-            return View();
+
+            var sectionService = new SectionDataService();
+            dynamic sections = sectionService.GetSections(SessionInfo.Current.AccessToken, SessionInfo.Current.UserId);
+
+            var model = new SectionListViewModel {Sections = sections};
+
+            return View(model);
         }
     }
 }
