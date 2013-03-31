@@ -118,7 +118,7 @@ namespace inBloomApiLibrary
 				if (accessToken1.Length == 38)
 				{
 					var endpoint = _apiHelper.ApiUrl + "/rest/system/session/check";
-					var request = ApiClient.Request(endpoint, oAuthResponse.AccessToken, RequestType.JsonObject);
+					var request = ApiClient.Request(endpoint, oAuthResponse.AccessToken);
 
 					if (request.ResponseObject != null)
 					{
@@ -156,7 +156,7 @@ namespace inBloomApiLibrary
 		private string GetUserId(string accessToken)
 		{
 			var endpoint = _apiHelper.BaseUrl + "/home";
-			var request = ApiClient.Request(endpoint, accessToken, RequestType.JsonObject);
+			var request = ApiClient.Request(endpoint, accessToken);
 
 			if (request.ResponseObject != null)
 			{
