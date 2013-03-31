@@ -56,7 +56,7 @@
     <Compile Include="Internal\ExtendedWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Internal\OAuthResponse.cs" />
+    <Compile Include="oAuth\OAuthResponse.cs" />
     <Compile Include="Services\AssessmentDataService.cs" />
     <Compile Include="Services\AttendanceDataService.cs" />
     <Compile Include="Services\CohortDataService.cs" />
@@ -76,7 +76,7 @@
     <Compile Include="Services\StaffDataService.cs" />
     <Compile Include="Services\StudentDataService.cs" />
     <Compile Include="Services\TeacherDataService.cs" />
-    <Compile Include="Internal\OAuth.cs" />
+    <Compile Include="oAuth\OAuth.cs" />
     <Compile Include="Internal\RequestType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\ServiceBase.cs" />
