@@ -5,16 +5,13 @@
 }
 
 <h2>Sections</h2>
-
-@{
-	<h4>Found @Model.Sections.Count sections</h4>
-}
-
+<h4>Found @Model.Sections.Count sections</h4>
 <table class="table table-bordered table-striped">
 	<thead>
 		<th>ID</th>
 		<th>Name</th>
 		<th>Medium</th>
+		<th>&nbsp;</th>
 	</thead>
 	@{
 		foreach (dynamic section in Model.Sections)
@@ -28,7 +25,6 @@
 		}
 	}
 </table>
-
 
 <div id="SectionDetailModal" class="modal hide fade">
   <div class="modal-header">
