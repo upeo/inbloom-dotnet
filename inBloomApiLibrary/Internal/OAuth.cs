@@ -15,7 +15,9 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using NLog;
 using Newtonsoft.Json.Linq;
@@ -73,7 +75,7 @@ namespace inBloomApiLibrary
 
 		public string AccessToken { get; private set; }
 		public string UserFullName { get; private set; }
-		public string UserSLIRoles { get; private set; }
+		public IEnumerable<string> UserSLIRoles { get; private set; }
 		public string UserId { get; private set; }
 
 		#endregion
@@ -123,40 +125,25 @@ namespace inBloomApiLibrary
 				// If we have a valid token, it'll be 38 chars long.  Let's add it to session if so.
 				if (accessToken1.Length == 38)
 				{
-					// Session.Add("access_token", access_token);
 					AccessToken = accessToken1;
 
-					var apiEndPoint = _apiHelper.ApiUrl + "/rest/system/session/check";
-					var request = ApiClient.Request(apiEndPoint, AccessToken, RequestType.JsonObject);
+					var endpoint = _apiHelper.ApiUrl + "/rest/system/session/check";
+					var request = ApiClient.Request(endpoint, AccessToken, RequestType.JsonObject);
 
 					if (request.ResponseObject != null)
 					{
 						JArray userInfo = request.ResponseObject;
 						if (userInfo.Count == 1)
 						{
-							UserFullName = userInfo[0]["full_name"].ToString();
-							UserSLIRoles = userInfo[0]["sliRoles"].ToString();
+							var u = userInfo[0];
+							UserFullName = u["full_name"].ToString();
+							UserSLIRoles = from x in u["sliRoles"]
+										   select x.Value<string>();
 						}
 					}
 
-					apiEndPoint = _apiHelper.ApiUrl + "/rest/v1.1/home";
-					request = ApiClient.Request(apiEndPoint, AccessToken, RequestType.JsonObject);
-
-					if (request.ResponseObject != null)
-					{
-						JArray userInfo = request.ResponseObject;
-
-						foreach (JObject obj in (JArray)userInfo[0]["links"])
-						{
-							if ((string)obj["rel"] == "self")
-							{
-								var link = (string)obj["href"];
-								var id = link.Substring(link.Length - 43);
-
-								UserId = id;
-							}
-						}
-					}
+					// Now get the User ID
+					UserId = GetUserId();
 
 					// Redirect to app main page.
 					return "OAuthSuccess";
@@ -169,6 +156,35 @@ namespace inBloomApiLibrary
 			}
 
 			return null;
+		}
+
+		/// <summary>
+		/// The session check endpoint doesn't give us the User ID so we have to do a second
+		/// API call here to the home endpoint and grab the ID from one of the links there
+		/// This seems like a hack though... Must be a better way of getting it.
+		/// </summary>
+		private string GetUserId()
+		{
+			var endpoint = _apiHelper.BaseUrl + "/home";
+			var request = ApiClient.Request(endpoint, AccessToken, RequestType.JsonObject);
+
+			if (request.ResponseObject != null)
+			{
+				JArray userInfo = request.ResponseObject;
+
+				foreach (JObject obj in (JArray)userInfo[0]["links"])
+				{
+					if ((string)obj["rel"] == "self")
+					{
+						var link = (string)obj["href"];
+						var id = link.Substring(link.Length - 43);
+
+						return id;
+					}
+				}
+			}
+
+			return string.Empty;
 		}
 	}
 }

@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web;
 
@@ -35,7 +36,7 @@ namespace SampleWebApp.Components
         public string UserId { get; set; }
         public string AccessToken { get; set; }
         public string FullName { get; set; }
-        public string Roles { get; set; }
+        public IEnumerable<string> Roles { get; set; }
         public string PostLoginRedirectUrl { get; set; }
 
         #endregion
@@ -78,7 +79,7 @@ namespace SampleWebApp.Components
             UserId = string.Empty;
             AccessToken = string.Empty;
             FullName = string.Empty;
-            Roles = string.Empty;
+            Roles = new List<string>();
             PostLoginRedirectUrl = string.Empty;
         }
 
