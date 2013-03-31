@@ -41,21 +41,16 @@ namespace SampleWebApp.Controllers
 
         public ActionResult GetStudents(string sectionId)
         {
-            var sectionService = new SectionDataService();
-
-            var sb = new StringBuilder();
-            sb.Append("<ul>");
-
-            dynamic studentsData = sectionService.GetSectionStudentAssociationStudentList(SessionInfo.Current.AccessToken, sectionId);
-
-            foreach (var student in studentsData)
+            try
             {
-                sb.AppendFormat("<li>{0} {1}</li>", student.name.firstName, student.name.lastSurname);
+                var sectionService = new SectionDataService();
+                dynamic studentsData = sectionService.GetSectionStudentAssociationStudentList(SessionInfo.Current.AccessToken, sectionId);
+                return View(studentsData);
             }
-
-            sb.Append("</ul>");
-
-            return Content(sb.ToString());
+            catch
+            {
+                return Content("No students found");
+            }
         }
     }
 }

@@ -144,6 +144,7 @@
     <Content Include="Content\Bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Content\Bootstrap\js\bootstrap.js" />
     <Content Include="Content\Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\custom.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Release.config">
@@ -182,6 +183,7 @@
     <Content Include="Views\Debug\Index.cshtml" />
     <Content Include="Views\Students\Detail.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
+    <Content Include="Views\Sections\GetStudents.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
