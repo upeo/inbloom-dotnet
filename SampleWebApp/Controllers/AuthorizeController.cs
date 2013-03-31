@@ -42,31 +42,27 @@ namespace SampleWebApp.Controllers
                 }
 
                 // Otherwise, we have a code, we can run the second leg of OAuth process.
-                string authorization = oAuth.CallAuthorization(null, code);
+                var authorization = oAuth.CallAuthorization(null, code);
 
                 // OAuth successful so get values, store in session and continue
-                if (authorization == "OAuthSuccess")
+                if (authorization.Success)
                 {
-                    // Ensure that all required values were retrieved from the OAuth login
-                    if (oAuth.AccessToken != null && oAuth.UserFullName != null && oAuth.UserSLIRoles != null && oAuth.UserId != null)
+                    // Authorization successful; set session variables
+                    SessionInfo.Current.AccessToken = authorization.AccessToken;
+                    SessionInfo.Current.FullName = authorization.UserFullName;
+                    SessionInfo.Current.Roles = authorization.UserSLIRoles;
+                    SessionInfo.Current.UserId = authorization.UserId;
+
+                    // Redirect to post login URL if one exists
+                    if (!string.IsNullOrEmpty(SessionInfo.Current.PostLoginRedirectUrl))
                     {
-                        // Authorization successful; set session variables
-                        SessionInfo.Current.AccessToken = oAuth.AccessToken;
-                        SessionInfo.Current.FullName = oAuth.UserFullName;
-                        SessionInfo.Current.Roles = oAuth.UserSLIRoles;
-                        SessionInfo.Current.UserId = oAuth.UserId;
-
-                        // Redirect to post login URL if one exists
-                        if (!string.IsNullOrEmpty(SessionInfo.Current.PostLoginRedirectUrl))
-                        {
-                            var returnUrl = SessionInfo.Current.PostLoginRedirectUrl;
-                            SessionInfo.Current.PostLoginRedirectUrl = null;
-                            return Redirect(returnUrl);
-                        }
-
-                        // Otherwise, just go to home
-                        return RedirectToAction("Index", "Home");
+                        var returnUrl = SessionInfo.Current.PostLoginRedirectUrl;
+                        SessionInfo.Current.PostLoginRedirectUrl = null;
+                        return Redirect(returnUrl);
                     }
+
+                    // Otherwise, just go to home
+                    return RedirectToAction("Index", "Home");
                 }
 
                 return Content("Unknown Error authorizing");

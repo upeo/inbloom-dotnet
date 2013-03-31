@@ -15,7 +15,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net;
@@ -71,15 +70,6 @@ namespace inBloomApiLibrary
 
 		#endregion
 
-		#region OAuth Data Accessors
-
-		public string AccessToken { get; private set; }
-		public string UserFullName { get; private set; }
-		public IEnumerable<string> UserSLIRoles { get; private set; }
-		public string UserId { get; private set; }
-
-		#endregion
-
 		/// <summary>
 		/// Gets the URL to which users should be redirected for login
 		/// </summary>
@@ -94,16 +84,16 @@ namespace inBloomApiLibrary
 		/// <param name="accessToken"></param>
 		/// <param name="code"></param>
 		/// <returns></returns>
-		public string CallAuthorization(string accessToken, string code)
+		public OAuthResponse CallAuthorization(string accessToken, string code)
 		{
 			// We already have an access token in session
 			if (!string.IsNullOrEmpty(accessToken))
-				return "OAuthSuccess";
+				return new OAuthResponse { Success = false, Message = "Access Token is missing"};
 
 			// We get a code back from the first leg of OAuth process.  If we don't have one, let's get it.
 			// Here the user will log into the SLC.  This page will be called back with the code to do second leg of OAuth.
 			if (string.IsNullOrEmpty(code))
-				return GetAuthorizationUrl();
+				return new OAuthResponse {Success = false, Message = "Code is missing; Authorization required", AuthorizationUrl = GetAuthorizationUrl()};
 
 			try
 			{
@@ -122,13 +112,13 @@ namespace inBloomApiLibrary
 				var response = JObject.Parse(result);
 				var accessToken1 = (string)response["access_token"];
 
+				var oAuthResponse = new OAuthResponse { Success = true, Message = "Authorization Successful", AccessToken = accessToken1};
+
 				// If we have a valid token, it'll be 38 chars long.  Let's add it to session if so.
 				if (accessToken1.Length == 38)
 				{
-					AccessToken = accessToken1;
-
 					var endpoint = _apiHelper.ApiUrl + "/rest/system/session/check";
-					var request = ApiClient.Request(endpoint, AccessToken, RequestType.JsonObject);
+					var request = ApiClient.Request(endpoint, oAuthResponse.AccessToken, RequestType.JsonObject);
 
 					if (request.ResponseObject != null)
 					{
@@ -136,17 +126,17 @@ namespace inBloomApiLibrary
 						if (userInfo.Count == 1)
 						{
 							var u = userInfo[0];
-							UserFullName = u["full_name"].ToString();
-							UserSLIRoles = from x in u["sliRoles"]
+							oAuthResponse.UserFullName = u["full_name"].ToString();
+							oAuthResponse.UserSLIRoles = from x in u["sliRoles"]
 										   select x.Value<string>();
 						}
 					}
 
 					// Now get the User ID
-					UserId = GetUserId();
+					oAuthResponse.UserId = GetUserId(oAuthResponse.AccessToken);
 
 					// Redirect to app main page.
-					return "OAuthSuccess";
+					return oAuthResponse;
 				}
 			}
 			catch (Exception ex)
@@ -163,10 +153,10 @@ namespace inBloomApiLibrary
 		/// API call here to the home endpoint and grab the ID from one of the links there
 		/// This seems like a hack though... Must be a better way of getting it.
 		/// </summary>
-		private string GetUserId()
+		private string GetUserId(string accessToken)
 		{
 			var endpoint = _apiHelper.BaseUrl + "/home";
-			var request = ApiClient.Request(endpoint, AccessToken, RequestType.JsonObject);
+			var request = ApiClient.Request(endpoint, accessToken, RequestType.JsonObject);
 
 			if (request.ResponseObject != null)
 			{
