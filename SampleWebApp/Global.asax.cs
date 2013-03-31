@@ -16,17 +16,27 @@
 
 using System.Web.Mvc;
 using System.Web.Routing;
+using NLog;
 
 namespace SampleWebApp
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            _logger.Trace("Application started");
+        }
+
+        protected void Application_End()
+        {
+            _logger.Trace("Application ended");
         }
     }
 }
