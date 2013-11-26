@@ -17,6 +17,8 @@
 using System;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using System.Collections.Specialized;
+using System.Diagnostics;
 
 namespace inBloomApiLibrary
 {
@@ -27,6 +29,8 @@ namespace inBloomApiLibrary
 
         public JArray CallApiForGet(string apiEndPoint, string accessToken)
         {
+            Uri endPoint = new Uri(apiEndPoint);
+            Trace.TraceInformation(string.Format("CallApiForGet: {0}", apiEndPoint));
             var request = ApiClient.Request(apiEndPoint, accessToken);
             return request.ResponseObject;
         }
@@ -34,6 +38,7 @@ namespace inBloomApiLibrary
         public string CallApiForPost(string apiEndPoint, string accessToken, string data)
         {
             var webClient = new ExtendedWebClient();
+            Trace.TraceInformation(string.Format("CallApiForPost: {0}", apiEndPoint));
             webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
             webClient.Headers.Add("Content-Type", "application/vnd.slc+json");
             webClient.Headers.Add("Accept", "application/vnd.slc+json");
@@ -43,6 +48,7 @@ namespace inBloomApiLibrary
         public string CallApiForPut(string apiEndPoint, string accessToken, string data)
         {
             var webClient = new ExtendedWebClient();
+            Trace.TraceInformation(string.Format("CallApiForPut: {0}", apiEndPoint));
             webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
             webClient.Headers.Add("Content-Type", "application/vnd.inbloom+json");
             webClient.Headers.Add("Accept", "application/vnd.inbloom+json");
@@ -52,6 +58,7 @@ namespace inBloomApiLibrary
         public string CallApiForDelete(String apiEndPoint, string accessToken)
         {
             var webClient = new ExtendedWebClient();
+            Trace.TraceInformation(string.Format("CallApiForDelete: {0}", apiEndPoint));
             webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
             webClient.Headers.Add("Content-Type", "application/vnd.inbloom+json");
             webClient.Headers.Add("Accept", "application/vnd.inbloom+json");
@@ -61,6 +68,7 @@ namespace inBloomApiLibrary
         public string CallApiWithParameter(String apiEndPoint, string accessToken)
         {
             var webClient = new WebClient();
+            Trace.TraceInformation(string.Format("CallApiWithParameter: {0}", apiEndPoint));
             webClient.Headers.Add("Authorization", string.Format("bearer {0}", accessToken));
             webClient.Headers.Add("Content-Type", "application/vnd.slc+json");
             webClient.Headers.Add("Accept", "application/vnd.slc+json");
