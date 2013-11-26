@@ -16,11 +16,18 @@
 
 using System;
 using Newtonsoft.Json.Linq;
+using inBloomApiLibrary;
+using System.Diagnostics;
 
 namespace inBloomApiLibrary
 {
 	public class StudentDataService : ServiceBase
 	{
+        /// <summary>
+        /// Default "limit" parameter for api calls. Set to "0" to return all rows. If not supplied, server api limit is 50.
+        /// </summary>
+        private readonly string defaultRowLimt = "0"; 
+
 		#region StudentAcademicRecords
 
 		/// <summary>
@@ -594,8 +601,8 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStudentGradeBookEntries(string accessToken)
 		{
-			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/studentGradebookEntries");
-			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
+            Uri apiEndPoint = new Uri(ApiHelper.BaseUrl + "/studentGradebookEntries").AddQuery("limit", defaultRowLimt);
+			return ApiHelper.CallApiForGet(apiEndPoint.ToString(), accessToken);
 		}
 
 		/// <summary>
@@ -909,6 +916,19 @@ namespace inBloomApiLibrary
 			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/students");
 			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
+
+        /// <summary>
+        ///     Gets students details.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        public JArray GetStudents(string accessToken, int? limit, int? offset)
+        {
+            Uri apiEndPoint = new Uri(ApiHelper.BaseUrl + "/students");
+            if (limit != null) { apiEndPoint = apiEndPoint.AddQuery("limit", limit.ToString()); }
+            if (offset != null) { apiEndPoint = apiEndPoint.AddQuery("offset", offset.ToString()); }
+            return ApiHelper.CallApiForGet(apiEndPoint.ToString(), accessToken);
+        }
 
 		/// <summary>
 		///     Gets students custom  details.
