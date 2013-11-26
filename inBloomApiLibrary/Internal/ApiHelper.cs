@@ -25,7 +25,7 @@ namespace inBloomApiLibrary
     internal class ApiHelper
     {
         public string ApiUrl = "https://api.sandbox.inbloom.org/api";
-        public string BaseUrl = "https://api.sandbox.inbloom.org/api/rest/v1.1";
+        public string BaseUrl = "https://api.sandbox.inbloom.org/api/rest/v1.2";
 
         public JArray CallApiForGet(string apiEndPoint, string accessToken)
         {
