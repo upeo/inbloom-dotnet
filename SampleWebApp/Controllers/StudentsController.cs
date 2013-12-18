@@ -33,20 +33,24 @@ namespace SampleWebApp.Controllers
         public ActionResult Index(int? limit, int? offset)
         {
             ViewBag.Title = "Students";
-
             var students = _studentDataService.GetStudents(SessionInfo.Current.AccessToken, limit, offset);
             var model = new StudentListViewModel {Students = students};
-
             return View(model);
+        }
+
+        public async Task<ActionResult> IndexAsync(int? limit, int? offset)
+        {
+            ViewBag.Title = "Students";
+            var students = await _studentDataService.GetStudentsAsync(SessionInfo.Current.AccessToken, limit, offset)
+                                                    .ContinueWith(t => new StudentListViewModel { Students = t.Result });
+            return View("Index", students);
         }
 
         public ActionResult Detail(string studentId)
         {
             ViewBag.Title = "Student Detail";
-
             var student = _studentDataService.GetStudentById(SessionInfo.Current.AccessToken, studentId).FirstOrDefault();
             var model = new StudentDetailViewModel {Student = student};
-
             return View(model);
         }
 
@@ -55,7 +59,7 @@ namespace SampleWebApp.Controllers
             ViewBag.Title = "Student Detail";
             var student = await _studentDataService.GetStudentByIdAsync(SessionInfo.Current.AccessToken, studentId)
                                                     .ContinueWith( t => new StudentDetailViewModel{ Student = t.Result.FirstOrDefault() });
-            
+           
             return View("Detail", student);
         }
 
