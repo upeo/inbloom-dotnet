@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="SectionDataServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentDataServiceTests.cs" />
+    <Compile Include="TeacherDataServiceTests.cs" />
+    <Compile Include="TestProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\inBloomApiLibrary\inBloomApiLibrary.csproj">

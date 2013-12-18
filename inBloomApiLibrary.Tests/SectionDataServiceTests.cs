@@ -10,8 +10,6 @@ namespace inBloomApiLibrary.Tests
     public class SectionDataServiceTests
     {
 
-        private readonly string accessToken = "t-214d81e2-e0ed-43ce-9340-78e36b16b8d4";
-        
         private readonly string section1 = "1002a07e1d2b86d6aedacd3c15e2ba877bf52450_id";
         private readonly string section2 = "46f335697cabc9f2f98246bffb992dced78ef100_id";
 
@@ -22,7 +20,7 @@ namespace inBloomApiLibrary.Tests
         {
             SectionDataService srv = new SectionDataService();
             string sectionId = "1002a07e1d2b86d6aedacd3c15e2ba877bf52450_id";
-            JArray result = srv.GetSectionStudentAssociationStudentList(accessToken, sectionId, null, null, null);
+            JArray result = srv.GetSectionStudentAssociationStudentList(TestProperties.AccessToken, sectionId, null, null, null);
             
             // make sure we have results
             Assert.IsTrue(result.HasValues);
@@ -43,8 +41,8 @@ namespace inBloomApiLibrary.Tests
             SectionDataService srv = new SectionDataService();
             string sectionId = "1002a07e1d2b86d6aedacd3c15e2ba877bf52450_id";
             string view = "gradebook";
-            
-            JArray result = srv.GetSectionStudentAssociationStudentList(accessToken, sectionId, null, null, view);
+
+            JArray result = srv.GetSectionStudentAssociationStudentList(TestProperties.AccessToken, sectionId, null, null, view);
            
             // make sure we have results
             Assert.IsTrue(result.HasValues);
@@ -66,7 +64,7 @@ namespace inBloomApiLibrary.Tests
         {
             SectionDataService srv = new SectionDataService();
             string sectionId = section1;
-            Task<JArray> task = srv.GetSectionStudentAssociationStudentListAsync(accessToken, sectionId, null, null, null);
+            Task<JArray> task = srv.GetSectionStudentAssociationStudentListAsync(TestProperties.AccessToken, sectionId, null, null, null);
             task.Wait();
             JArray result = task.Result;
             
@@ -88,7 +86,7 @@ namespace inBloomApiLibrary.Tests
             SectionDataService srv = new SectionDataService();
             string sectionId = section1;
             string view = "gradebook";
-            Task<JArray> task = srv.GetSectionStudentAssociationStudentListAsync(accessToken, sectionId, null, null, view);
+            Task<JArray> task = srv.GetSectionStudentAssociationStudentListAsync(TestProperties.AccessToken, sectionId, null, null, view);
             task.Wait();
             JArray result = task.Result;
 
@@ -112,7 +110,7 @@ namespace inBloomApiLibrary.Tests
             string view = "gradebook";
             int limit = 12;
             int offset = 2;
-            Task<JArray> task = srv.GetSectionStudentAssociationStudentListAsync(accessToken, sectionId, limit, offset, view);
+            Task<JArray> task = srv.GetSectionStudentAssociationStudentListAsync(TestProperties.AccessToken, sectionId, limit, offset, view);
             task.Wait();
             JArray result = task.Result;
 
@@ -135,7 +133,7 @@ namespace inBloomApiLibrary.Tests
             string view = "gradebook";
             int limit = 120;
             int offset = 0;
-            Task<JArray> task = srv.GetSectionStudentAssociationStudentListAsync(accessToken, sectionId, limit, offset, view);
+            Task<JArray> task = srv.GetSectionStudentAssociationStudentListAsync(TestProperties.AccessToken, sectionId, limit, offset, view);
             task.Wait();
             JArray result = task.Result;
 
@@ -155,7 +153,7 @@ namespace inBloomApiLibrary.Tests
         {
             SectionDataService srv = new SectionDataService();
             string sectionId = section2;
-            Task<JArray> task = srv.GetSectionTeacherAssociationTeacherListAsync(accessToken, sectionId, 0, 0);
+            Task<JArray> task = srv.GetSectionTeacherAssociationTeacherListAsync(TestProperties.AccessToken, sectionId, 0, 0);
             task.Wait();
             JArray result = task.Result;
 
@@ -178,7 +176,7 @@ namespace inBloomApiLibrary.Tests
         {
             SectionDataService srv = new SectionDataService();
             string sectionId = section2;
-            Task<JArray> task = srv.GetSectionsAsync(accessToken, sectionId, 0, 0);
+            Task<JArray> task = srv.GetSectionsAsync(TestProperties.AccessToken, sectionId, 0, 0);
             task.Wait();
             JArray result = task.Result;
 
@@ -200,7 +198,7 @@ namespace inBloomApiLibrary.Tests
         //{
         //    SectionDataService srv = new SectionDataService();
         //    string sectionId = section2; //todo: need a sectionId with "custom"
-        //    Task<JArray> task = srv.GetSectionCustomAsync(accessToken, sectionId, 0, 0);
+        //    Task<JArray> task = srv.GetSectionCustomAsync(TestProperties.AccessToken, sectionId, 0, 0);
         //    task.Wait();
         //    JArray result = task.Result;
 
@@ -222,7 +220,7 @@ namespace inBloomApiLibrary.Tests
         {
             SectionDataService srv = new SectionDataService();
             string sectionId = section2;
-            Task<JArray> task = srv.GetSectionByIdAsync(accessToken, sectionId, 0, 0);
+            Task<JArray> task = srv.GetSectionByIdAsync(TestProperties.AccessToken, sectionId, 0, 0);
             task.Wait();
             JArray result = task.Result;
 
@@ -244,7 +242,7 @@ namespace inBloomApiLibrary.Tests
         {
             SectionDataService srv = new SectionDataService();
             string sectionId = section2;
-            Task<JArray> task = srv.GetSectionStudentAssociationsAsync(accessToken, sectionId, 0, 0);
+            Task<JArray> task = srv.GetSectionStudentAssociationsAsync(TestProperties.AccessToken, sectionId, 0, 0);
             task.Wait();
             JArray result = task.Result;
 
@@ -267,7 +265,7 @@ namespace inBloomApiLibrary.Tests
         {
             SectionDataService srv = new SectionDataService();
             string sectionId = section2;
-            Task<JArray> task = srv.GetSectionTeacherAssociationsAsync(accessToken, sectionId, 0, 0);
+            Task<JArray> task = srv.GetSectionTeacherAssociationsAsync(TestProperties.AccessToken, sectionId, 0, 0);
             task.Wait();
             JArray result = task.Result;
 
@@ -282,6 +280,7 @@ namespace inBloomApiLibrary.Tests
             JToken id = firstSection.SelectToken("id", false);
             Assert.IsTrue(!string.IsNullOrEmpty(id.ToString()));
         }
+
 
 
         #endregion
