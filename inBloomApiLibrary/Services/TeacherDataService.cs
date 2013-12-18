@@ -16,6 +16,7 @@
 
 using System;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace inBloomApiLibrary
 {
@@ -145,12 +146,102 @@ namespace inBloomApiLibrary
 		}
 
 		#endregion
+        
+        #endregion
 
-		#endregion
+        #region Teachers Async
 
-		#region teacherSchoolAssociations
+        /// <summary>
+        ///     Get a teacher by their ID
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="teacherId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetTeacherByIdAsync(string accessToken, string teacherId)
+        {
+            string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/teachers/{0}", teacherId);
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
 
-		/// <summary>
+        /// <summary>
+        ///     Gets teachers details.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetTeachersAsync(string accessToken, int? limit, int? offset)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/teachers"));
+            if (limit != null) { apiEndPoint = apiEndPoint.AddQuery("limit", limit.ToString()); }
+            if (offset != null) { apiEndPoint = apiEndPoint.AddQuery("offset", offset.ToString()); }
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets teachers custom details.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="teacherId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetTeacherCustomAsync(string accessToken, string teacherId)
+        {
+            string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/teachers/{0}/custom", teacherId);
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets teacher school associations within the teachers.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="teacherId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetTeacherTeacherSchoolAssociationsAsync(string accessToken, string teacherId)
+        {
+            string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/teachers/{0}/teacherSchoolAssociations", teacherId);
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets schools in teacher school associations within the teachers.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="teacherId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetTeacherTeacherSchoolAssociationSchoolsAsync(string accessToken, string teacherId)
+        {
+            string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/teachers/{0}/teacherSchoolAssociations/schools", teacherId);
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets teacher section associations within the teachers.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="teacherId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetTeacherTeacherSectionAssociationsAsync(string accessToken, string teacherId)
+        {
+            string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/teachers/{0}/teacherSectionAssociations", teacherId);
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets sections in teacher section associations within the teachers.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="teacherId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetTeacherTeacherSectionAssociationSectionsAsync(string accessToken, string teacherId)
+        {
+            string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/teachers/{0}/teacherSectionAssociations/sections", teacherId);
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        
+        #endregion
+
+        #region teacherSchoolAssociations
+
+        /// <summary>
 		///     Gets teacher school associations details.
 		/// </summary>
 		/// <param name="accessToken"></param>

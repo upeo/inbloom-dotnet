@@ -18,6 +18,7 @@ using System;
 using Newtonsoft.Json.Linq;
 using inBloomApiLibrary;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace inBloomApiLibrary
 {
@@ -26,7 +27,7 @@ namespace inBloomApiLibrary
         /// <summary>
         /// Default "limit" parameter for api calls. Set to "0" to return all rows. If not supplied, server api limit is 50.
         /// </summary>
-        private readonly string defaultRowLimt = "0"; 
+        //private readonly string defaultRowLimt = "0"; 
 
 		#region StudentAcademicRecords
 
@@ -601,9 +602,22 @@ namespace inBloomApiLibrary
 		/// <returns></returns>
 		public JArray GetStudentGradeBookEntries(string accessToken)
 		{
-            Uri apiEndPoint = new Uri(ApiHelper.BaseUrl + "/studentGradebookEntries").AddQuery("limit", defaultRowLimt);
+            Uri apiEndPoint = new Uri(ApiHelper.BaseUrl + "/studentGradebookEntries");
 			return ApiHelper.CallApiForGet(apiEndPoint.ToString(), accessToken);
 		}
+
+        /// <summary>
+        ///     Gets student grade book entries details.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        public JArray GetStudentGradeBookEntries(string accessToken, int? limit, int? offset)
+        {
+            Uri apiEndPoint = new Uri(ApiHelper.BaseUrl + "/studentGradebookEntries");
+            if (limit != null) { apiEndPoint = apiEndPoint.AddQuery("limit", limit.ToString()); }
+            if (offset != null) { apiEndPoint = apiEndPoint.AddQuery("offset", offset.ToString()); }
+            return ApiHelper.CallApiForGet(apiEndPoint.ToString(), accessToken);
+        }
 
 		/// <summary>
 		///     Gets student grade book entries custom  details.
@@ -911,10 +925,10 @@ namespace inBloomApiLibrary
 		/// </summary>
 		/// <param name="accessToken"></param>
 		/// <returns></returns>
-		public JArray GetStudents(string accessToken)
+        public JArray GetStudents(string accessToken)
 		{
-			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/students");
-			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
+            Uri apiEndPoint = new Uri(ApiHelper.BaseUrl + "/students");
+            return ApiHelper.CallApiForGet(apiEndPoint.ToString(), accessToken);
 		}
 
         /// <summary>
@@ -960,6 +974,7 @@ namespace inBloomApiLibrary
 		/// <param name="accessToken"></param>
 		/// <param name="studentId"></param>
 		/// <returns></returns>
+        [System.Obsolete]
 		public JArray GetStudentCourseTranscripts(string accessToken, string studentId)
 		{
 			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/students/{0}/courseTranscripts", studentId);
@@ -972,6 +987,7 @@ namespace inBloomApiLibrary
 		/// <param name="accessToken"></param>
 		/// <param name="studentId"></param>
 		/// <returns></returns>
+        [System.Obsolete]
 		public JArray GetStudentCourseTranscriptCourses(string accessToken, string studentId)
 		{
 			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/students/{0}/courseTranscripts/courses", studentId);
@@ -1146,6 +1162,21 @@ namespace inBloomApiLibrary
 			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
 
+        /// <summary>
+        ///     Gets student section associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public JArray GetStudentStudentSectionAssociations(string accessToken, string studentId, string views)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentSectionAssociations", studentId));
+            if (!string.IsNullOrEmpty(views)) { apiEndPoint = apiEndPoint.AddQuery("views", views); }
+            return ApiHelper.CallApiForGet(apiEndPoint.ToString(), accessToken);
+        }
+
+
 		/// <summary>
 		///     Gets sections in student section associations within the students.
 		/// </summary>
@@ -1201,9 +1232,232 @@ namespace inBloomApiLibrary
 
 		#endregion
 
-		#region studentSchoolAssociations
+        #region Students Async
 
-		/// <summary>
+        /// <summary>
+        ///     Get student by ID
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentByIdAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets students details.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentsAsync(string accessToken, int? limit, int? offset)
+        {
+            Uri apiEndPoint = new Uri(ApiHelper.BaseUrl + "/students");
+            if (limit != null) { apiEndPoint = apiEndPoint.AddQuery("limit", limit.ToString()); }
+            if (offset != null) { apiEndPoint = apiEndPoint.AddQuery("offset", offset.ToString()); }
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint.ToString(), accessToken);
+        }
+
+        /// <summary>
+        ///     Gets attendances within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentAttendancesAsync(string accessToken, string studentId, int? limit)
+        {
+            //note: offset parameter does not seem to work as of 18-Dec-2013, Api ver 1.3 so it is not included here.
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/attendances", studentId));
+            if (limit != null) { apiEndPoint = apiEndPoint.AddQuery("limit", limit.ToString()); }
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+                
+        /// <summary>
+        ///     Gets students custom  details.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentCustomAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/custom", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets report cards within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentReportCardsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/reportCards", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets student assessments within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentAssessmentsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentAssessments", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets assessments in student assessments within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentAssessmentAssessmentsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentAssessments/assessments", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets student cohort associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentCohortAssociationsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentCohortAssociations", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets cohorts in student cohort associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentCohortAssociationCohortsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentCohortAssociations/cohorts", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets student discipline incident associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentDisciplineIncidentAssociationsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentDisciplineIncidentAssociations", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets discipline incidents in student discipline incident associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentDisciplineIncidentAssociationDisciplineIncidentsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentDisciplineIncidentAssociations/disciplineIncidents", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets student parent associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentParentAssociationsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentParentAssociations", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets student program associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentProgramAssociationsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentProgramAssociations", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets programs in student program associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentProgramAssociationProgramsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentProgramAssociations/programs", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets student school associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentSchoolAssociationsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentSchoolAssociations", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets schools in student school associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentSchoolAssociationSchoolsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentSchoolAssociations/schools", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets student section associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentSectionAssociationsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentSectionAssociations", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        /// <summary>
+        ///     Gets sections in student section associations within the students.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public async Task<JArray> GetStudentStudentSectionAssociationSectionsAsync(string accessToken, string studentId)
+        {
+            Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/studentSectionAssociations/sections", studentId));
+            return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
+        }
+
+        #endregion
+        
+        #region studentSchoolAssociations
+
+        /// <summary>
 		///     Gets student school associations details.
 		/// </summary>
 		/// <param name="accessToken"></param>
@@ -1317,6 +1571,20 @@ namespace inBloomApiLibrary
 			string apiEndPoint = String.Format(ApiHelper.BaseUrl + "/studentSectionAssociations");
 			return ApiHelper.CallApiForGet(apiEndPoint, accessToken);
 		}
+
+        /// <summary>
+        ///     Gets student section associations details.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        public JArray GetStudentSectionAssociations(string accessToken, int? limit, int? offset, string views)
+        {
+            Uri apiEndPoint = new Uri(ApiHelper.BaseUrl + "/studentSectionAssociations");
+            if (limit != null) { apiEndPoint = apiEndPoint.AddQuery("limit", limit.ToString()); }
+            if (offset != null) { apiEndPoint = apiEndPoint.AddQuery("offset", offset.ToString()); }
+	        if (!string.IsNullOrEmpty(views)) { apiEndPoint = apiEndPoint.AddQuery("views", views); }
+            return ApiHelper.CallApiForGet(apiEndPoint.ToString(), accessToken);
+        }
 
 		/// <summary>
 		///     Gets student section associations details by id.

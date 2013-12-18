@@ -19,13 +19,14 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace inBloomApiLibrary
 {
     internal class ApiHelper
     {
         public string ApiUrl = "https://api.sandbox.inbloom.org/api";
-        public string BaseUrl = "https://api.sandbox.inbloom.org/api/rest/v1.2";
+        public string BaseUrl = "https://api.sandbox.inbloom.org/api/rest/v1.3";
 
         public JArray CallApiForGet(string apiEndPoint, string accessToken)
         {
@@ -33,6 +34,19 @@ namespace inBloomApiLibrary
             Trace.TraceInformation(string.Format("CallApiForGet: {0}", apiEndPoint));
             var request = ApiClient.Request(apiEndPoint, accessToken);
             return request.ResponseObject;
+        }
+        
+        public async Task<JArray> CallApiForGetAsync(string apiEndPoint, string accessToken)
+        {
+            Trace.TraceInformation(string.Format("CallApiForGetAsync: {0}", apiEndPoint));
+            Uri endPoint = new Uri(apiEndPoint);
+            return await ApiClient.RequestAsync(apiEndPoint, accessToken).ContinueWith(t => t.Result.ResponseObject);
+        }
+
+        public async Task<JArray> CallApiForGetAsync(Uri apiEndPoint, string accessToken)
+        {
+            Trace.TraceInformation(string.Format("CallApiForGetAsync: {0}", apiEndPoint));
+            return await ApiClient.RequestAsync(apiEndPoint, accessToken).ContinueWith(t => t.Result.ResponseObject);
         }
 
         public string CallApiForPost(string apiEndPoint, string accessToken, string data)
