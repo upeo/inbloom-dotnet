@@ -20,6 +20,7 @@ using SampleWebApp.Components;
 using SampleWebApp.Components.Attributes;
 using SampleWebApp.Models;
 using inBloomApiLibrary;
+using System.Threading.Tasks;
 
 namespace SampleWebApp.Controllers
 {
@@ -29,11 +30,11 @@ namespace SampleWebApp.Controllers
     {
         private readonly StudentDataService _studentDataService = new StudentDataService();
 
-        public ActionResult Index()
+        public ActionResult Index(int? limit, int? offset)
         {
             ViewBag.Title = "Students";
 
-            var students = _studentDataService.GetStudents(SessionInfo.Current.AccessToken);
+            var students = _studentDataService.GetStudents(SessionInfo.Current.AccessToken, limit, offset);
             var model = new StudentListViewModel {Students = students};
 
             return View(model);
@@ -48,5 +49,15 @@ namespace SampleWebApp.Controllers
 
             return View(model);
         }
+
+        public async Task<ActionResult> DetailAsync(string studentId)
+        {
+            ViewBag.Title = "Student Detail";
+            var student = await _studentDataService.GetStudentByIdAsync(SessionInfo.Current.AccessToken, studentId)
+                                                    .ContinueWith( t => new StudentDetailViewModel{ Student = t.Result.FirstOrDefault() });
+            
+            return View("Detail", student);
+        }
+
     }
 }
