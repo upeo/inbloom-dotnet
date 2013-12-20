@@ -6,6 +6,10 @@
 	{
 		<ul>
 			<li>No students found</li>
+        @if (ViewBag.Error != null)
+        {
+            <li>@ViewBag.Error</li>
+        }      
 		</ul>
 	}
 	else
