@@ -6,6 +6,7 @@
 	<thead>
 		<th>ID</th>
 		<th>Name</th>
+        <th>Assesments</th>
 		<th>Date of Birth</th>
 	</thead>
 	@{
@@ -14,7 +15,9 @@
 			<tr>
 				<td>@(student.id)</td>
 				<td><a href="@Url.Action("Detail", "Students", new { Id = student.id })">@student.name.firstName @student.name.lastSurname</a></td>
-				<td>@Convert.ToDateTime(student.birthData.birthDate.ToString()).ToString("ddd, MMMM dd, yyyy")</td>
+				<td><a href="@Url.Action("AssesmentsAsync", new { studentId = student.id })">show assesments</a></td>
+                <td><a href="@Url.Action("AttendancesAsync", new { studentId = student.id })">show attendance</a></td>
+                <td>@Convert.ToDateTime(student.birthData.birthDate.ToString()).ToString("ddd, MMMM dd, yyyy")</td>
 			</tr>
 		}
 	}

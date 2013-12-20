@@ -140,6 +140,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SectionListViewModel.cs" />
+    <Compile Include="Models\StudentAssessmentsListViewModel.cs" />
+    <Compile Include="Models\StudentAttendancesListViewModel.cs" />
     <Compile Include="Models\StudentDetailViewModel.cs" />
     <Compile Include="Models\StudentListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +193,8 @@
     <Content Include="Views\Students\Detail.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
     <Content Include="Views\Sections\GetStudents.cshtml" />
+    <Content Include="Views\Students\Assessments.cshtml" />
+    <Content Include="Views\Students\Attendances.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

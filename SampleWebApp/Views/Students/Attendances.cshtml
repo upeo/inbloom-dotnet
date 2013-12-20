@@ -1,0 +1,24 @@
+﻿@model SampleWebApp.Models.StudentAttendancesListViewModel
+
+<h1>Student Assessments</h1>
+
+<table class="table table-bordered table-striped">
+	<tr>
+		<th>Assessment ID</th>
+        <th>Date</th>
+		<th>Score</th>
+        <th>Grade Level</th>
+    </tr>
+	@{
+		foreach (dynamic attendance in Model.StudentAttendances)
+		{
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                </td>
+                <td></td>
+			</tr>
+		}
+	}
+</table>

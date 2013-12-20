@@ -1,0 +1,29 @@
+﻿@model SampleWebApp.Models.StudentAssessmentsListViewModel
+
+<h1>Student Assessments</h1>
+
+<table class="table table-bordered table-striped">
+	<tr>
+		<th>Assessment ID</th>
+        <th>Date</th>
+		<th>Score</th>
+        <th>Grade Level</th>
+    </tr>
+	@{
+		foreach (dynamic assesment in Model.StudentAssesments)
+		{
+            var results = assesment.scoreResults;
+            <tr>
+                <td>@assesment.assessmentId</td>
+                <td>@assesment.administrationDate</td>
+                <td>
+                    @foreach (dynamic sr in assesment.scoreResults)
+                    {
+                        @sr.result <br />
+                    }
+                </td>
+                <td>@assesment.gradeLevelWhenAssessed</td>
+			</tr>
+		}
+	}
+</table>

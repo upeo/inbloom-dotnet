@@ -1267,7 +1267,6 @@ namespace inBloomApiLibrary
         /// <returns></returns>
         public async Task<JArray> GetStudentAttendancesAsync(string accessToken, string studentId, int? limit)
         {
-            //note: offset parameter does not seem to work as of 18-Dec-2013, Api ver 1.3 so it is not included here.
             Uri apiEndPoint = new Uri(String.Format(ApiHelper.BaseUrl + "/students/{0}/attendances", studentId));
             if (limit != null) { apiEndPoint = apiEndPoint.AddQuery("limit", limit.ToString()); }
             return await ApiHelper.CallApiForGetAsync(apiEndPoint, accessToken);
