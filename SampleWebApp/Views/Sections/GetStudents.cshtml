@@ -19,7 +19,30 @@
 			@foreach (var student in Model)
 			{
 				<li><a href="@Url.Action("Detail", "Students", new { studentId = student.id })">@student.name.firstName @student.name.lastSurname</a></li>
-			}
+
+                if (student.studentGradebookEntries != null)
+                {
+                    <table>
+                        <tr>
+                            <th>Assigned</th>
+                            <th>Fulfilled</th>
+                            <th>Letter Grade</th>
+                            <th>Numeric Grade</th>
+                        </tr>
+                        
+                        @foreach (var gradebookEntry in student.studentGradebookEntries)
+                        {
+                            <tr>
+
+                                <td>@gradebookEntry.gradebookEntries.dateAssigned</td>
+                                <td>@gradebookEntry.dateFulfilled</td>
+                                <td>@gradebookEntry.letterGradeEarned</td>
+                                <td>@gradebookEntry.numericGradeEarned</td>
+                            </tr>
+                        }
+                    </table>
+                }
+            }
 		</ul>
 	}
 }
