@@ -76,7 +76,7 @@ namespace SampleWebApp.Controllers
             ViewBag.Title = "Student Assements";
             var assesments = await _studentDataService.GetStudentAttendancesAsync(SessionInfo.Current.AccessToken, studentId, limit)
                 .ContinueWith(t => new StudentAttendancesListViewModel { StudentAttendances = t.Result }); 
-            return View("Assessments", assesments);
+            return View("Attendances", assesments);
         }
 
     }
