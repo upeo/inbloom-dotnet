@@ -63,5 +63,21 @@ namespace SampleWebApp.Controllers
             return View("Detail", student);
         }
 
+        public async Task<ActionResult> AssesmentsAsync(string studentId)
+        {
+            ViewBag.Title = "Student Assements";
+            var assesments = await _studentDataService.GetStudentStudentAssessmentsAsync(SessionInfo.Current.AccessToken, studentId)
+                .ContinueWith(t => new StudentAssessmentsListViewModel { StudentAssesments = t.Result });
+            return View("Assessments", assesments);
+        }
+
+        public async Task<ActionResult> AttendancesAsync(string studentId, int? limit)
+        {
+            ViewBag.Title = "Student Assements";
+            var assesments = await _studentDataService.GetStudentAttendancesAsync(SessionInfo.Current.AccessToken, studentId, limit)
+                .ContinueWith(t => new StudentAttendancesListViewModel { StudentAttendances = t.Result }); 
+            return View("Assessments", assesments);
+        }
+
     }
 }

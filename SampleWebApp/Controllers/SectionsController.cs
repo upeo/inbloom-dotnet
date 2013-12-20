@@ -39,6 +39,15 @@ namespace SampleWebApp.Controllers
             return View(model);
         }
 
+        public async Task<ActionResult> IndexAsync(int? limit, int? offset)
+        {
+            ViewBag.Title = "Classes";
+            var sectionService = new SectionDataService();
+            var sections = await sectionService.GetSectionsAsync(SessionInfo.Current.AccessToken, SessionInfo.Current.UserId, limit, offset)
+                                                .ContinueWith(t => new SectionListViewModel { Sections = t.Result });
+            return View("Index", sections);
+        }
+
         public ActionResult GetStudents(string sectionId, int? limit, int? offset, string view)
         {
             try
@@ -49,6 +58,7 @@ namespace SampleWebApp.Controllers
             }
             catch(Exception ex)
             {
+                Trace.TraceError(ex.Message);
                 ViewBag.Error = ex.Message;
                 return Content("No students found");
             }
@@ -66,6 +76,7 @@ namespace SampleWebApp.Controllers
             catch(Exception ex)
             {
                 Trace.TraceError(ex.Message);
+                ViewBag.Error = ex.Message;
                 return Content("No students found");
             }
         }
