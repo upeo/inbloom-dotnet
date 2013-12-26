@@ -54,6 +54,7 @@ namespace SampleWebApp.Components
                     routeVals.Add("SPLanguage", spCont.SPHostUrl.ToString());
                     routeVals.Add("SPClientTag", spCont.SPClientTag);
                     routeVals.Add("SPProductNumber", spCont.SPProductNumber);
+                    routeVals.Add("limit", 0);
                 }
                 return routeVals;
             }
