@@ -1,0 +1,25 @@
+﻿@model SampleWebApp.Models.StudentListViewModel
+
+<h1>Students</h1>
+<h4>Found @Model.Students.Count students</h4>
+<table class="table table-bordered table-striped">
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+        <th>Assessments</th>
+        <th>Attendance</th>
+		<th>Date of Birth</th>
+	</thead>
+	@{
+		foreach (dynamic student in Model.Students)
+		{
+			<tr>
+				<td>@(student.id)</td>
+				<td><a href="@Url.Action("Detail", "Students", new { Id = student.id })">@student.name.firstName @student.name.lastSurname</a></td>
+				<td><a href="@Url.Action("AssesmentsAsync", new { studentId = student.id })">show assesments</a></td>
+                <td><a href="@Url.Action("AttendancesAsync", new { studentId = student.id })">show attendance</a></td>
+                <td>@Convert.ToDateTime(student.birthData.birthDate.ToString()).ToString("ddd, MMMM dd, yyyy")</td>
+			</tr>
+		}
+	}
+</table>
