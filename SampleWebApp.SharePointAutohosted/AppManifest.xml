@@ -8,7 +8,7 @@
 >
   <Properties>
     <Title>SampleWebApp.SharePointAutohosted</Title>
-    <StartPage>~remoteAppUrl/?{StandardTokens}</StartPage>
+    <StartPage>~remoteAppUrl/?{StandardTokens}&amp;SPHostTitle={HostTitle}</StartPage>
   </Properties>
 
   <AppPrincipal>
