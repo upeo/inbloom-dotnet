@@ -1,5 +1,7 @@
 # Web config file
-Web.config
+# Web.config
+Web.Debug.config
+Web.Release.config
 
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 [Bb]in/
@@ -82,7 +84,7 @@ publish
 *.Publish.xml
 
 # NuGet Packages Directory
-# packages
+packages
 
 # Windows Azure Build Output
 csx
@@ -90,6 +92,9 @@ csx
 
 # Windows Store app package directory
 AppPackages/
+
+# Image thumbnails
+[Tt]humbs.db
 
 # Others
 [Bb]in

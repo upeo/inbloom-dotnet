@@ -20,6 +20,7 @@ using SampleWebApp.Components;
 using SampleWebApp.Components.Attributes;
 using SampleWebApp.Models;
 using inBloomApiLibrary;
+using System.Threading.Tasks;
 
 namespace SampleWebApp.Controllers
 {
@@ -29,24 +30,54 @@ namespace SampleWebApp.Controllers
     {
         private readonly StudentDataService _studentDataService = new StudentDataService();
 
-        public ActionResult Index()
+        public ActionResult Index(int? limit, int? offset)
         {
             ViewBag.Title = "Students";
-
-            var students = _studentDataService.GetStudents(SessionInfo.Current.AccessToken);
+            var students = _studentDataService.GetStudents(SessionInfo.Current.AccessToken, limit, offset);
             var model = new StudentListViewModel {Students = students};
-
             return View(model);
+        }
+
+        public async Task<ActionResult> IndexAsync(int? limit, int? offset)
+        {
+            ViewBag.Title = "Students";
+            var students = await _studentDataService.GetStudentsAsync(SessionInfo.Current.AccessToken, limit, offset)
+                                                    .ContinueWith(t => new StudentListViewModel { Students = t.Result });
+            return View("Index", students);
         }
 
         public ActionResult Detail(string studentId)
         {
             ViewBag.Title = "Student Detail";
-
             var student = _studentDataService.GetStudentById(SessionInfo.Current.AccessToken, studentId).FirstOrDefault();
             var model = new StudentDetailViewModel {Student = student};
-
             return View(model);
         }
+
+        public async Task<ActionResult> DetailAsync(string studentId)
+        {
+            ViewBag.Title = "Student Detail";
+            var student = await _studentDataService.GetStudentByIdAsync(SessionInfo.Current.AccessToken, studentId)
+                                                    .ContinueWith( t => new StudentDetailViewModel{ Student = t.Result.FirstOrDefault() });
+           
+            return View("Detail", student);
+        }
+
+        public async Task<ActionResult> AssesmentsAsync(string studentId)
+        {
+            ViewBag.Title = "Student Assements";
+            var assesments = await _studentDataService.GetStudentStudentAssessmentsAsync(SessionInfo.Current.AccessToken, studentId)
+                .ContinueWith(t => new StudentAssessmentsListViewModel { StudentAssesments = t.Result });
+            return View("Assessments", assesments);
+        }
+
+        public async Task<ActionResult> AttendancesAsync(string studentId, int? limit)
+        {
+            ViewBag.Title = "Student Assements";
+            var assesments = await _studentDataService.GetStudentAttendancesAsync(SessionInfo.Current.AccessToken, studentId, limit)
+                .ContinueWith(t => new StudentAttendancesListViewModel { StudentAttendances = t.Result }); 
+            return View("Attendances", assesments);
+        }
+
     }
 }

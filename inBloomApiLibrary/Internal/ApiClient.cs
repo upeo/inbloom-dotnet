@@ -18,6 +18,7 @@ using System;
 using System.Net;
 using NLog;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace inBloomApiLibrary
 {
@@ -102,6 +103,33 @@ namespace inBloomApiLibrary
 				throw;
 			}
 		}
+
+        /// <summary>
+        /// Executes an asynchronous request against the API and gets the result as a JSON
+        /// </summary>
+        public static async Task<ApiResponse> RequestAsync(string apiEndpoint, string accessToken, RequestType requestType = RequestType.JsonObject)
+        {
+            return await RequestAsync(new Uri(apiEndpoint), accessToken, RequestType.JsonObject);
+        }
+
+        /// <summary>
+        /// Executes an asynchronous request against the API and gets the result as a JSON
+        /// </summary>
+        public static async Task<ApiResponse> RequestAsync(Uri apiEndpoint, string accessToken, RequestType requestType = RequestType.JsonObject)
+        {
+            try
+            {
+                using (var restClient = GetExtendedWebClient(accessToken, requestType))
+                {
+                    return await restClient.DownloadStringTaskAsync(apiEndpoint).ContinueWith(t => GetApiResponse(t.Result, requestType, restClient.StatusCode));
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.WarnException("Error requesting API Endpoint: " + apiEndpoint, ex);
+                throw;
+            }
+        }
 
 		/// <summary>
 		/// Executes a POST against the inBloom API
