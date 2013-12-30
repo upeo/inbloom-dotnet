@@ -20,6 +20,8 @@
 		$("#SectionDetailModal .modal-body").html("Loading...").load(target, function() {
 			$("#SectionDetailModal").modal("show");
 		});
+
+		return false;
 	});
 
 	function updateQueryStringParameter(uri, key, value) {
