@@ -93,9 +93,12 @@ csx
 # Windows Store app package directory
 AppPackages/
 
+<<<<<<< HEAD
+=======
 # Image thumbnails
 [Tt]humbs.db
 
+>>>>>>> master
 # Others
 [Bb]in
 [Oo]bj

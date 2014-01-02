@@ -1,27 +1,24 @@
 ﻿@model dynamic
 @{
-	Layout = null;
+    Layout = null;
 
-	if (Model.Count == 0)
-	{
-		<ul>
-			<li>No students found</li>
-        @if (ViewBag.Error != null)
-        {
-            <li>@ViewBag.Error</li>
-        }      
-		</ul>
-	}
-	else
-	{
-		<p>Found @Model.Count students</p>
-		<ul>
-			@foreach (var student in Model)
-			{
-				<li><a href="@Url.Action("Detail", "Students", new { studentId = student.id })">@student.name.firstName @student.name.lastSurname</a></li>
-<<<<<<< HEAD
-			}
-=======
+    if (Model.Count == 0)
+    {
+        <ul>
+            <li>No students found</li>
+            @if (ViewBag.Error != null)
+            {
+                <li>@ViewBag.Error</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Found @Model.Count students</p>
+        <ul>
+            @foreach (var student in Model)
+            {
+                <li><a href="@Url.Action("Detail", "Students", new { studentId = student.id })">@student.name.firstName @student.name.lastSurname</a></li>
 
                 if (student.studentGradebookEntries != null)
                 {
@@ -33,7 +30,7 @@
                             <th>Letter Grade</th>
                             <th>Numeric Grade</th>
                         </tr>
-                        
+
                         @foreach (var gradebookEntry in student.studentGradebookEntries)
                         {
                             <tr>
@@ -47,7 +44,6 @@
                     </table>
                 }
             }
->>>>>>> master
-		</ul>
-	}
+        </ul>
+    }
 }

@@ -1,0 +1,64 @@
+﻿@using SampleWebApp.Components
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>@ViewBag.Title - inBloom API .NET Library Sample Web App</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="@Url.Content("~/Content/Bootstrap/js/bootstrap.min.js")"></script>
+		<link href="@Url.Content("~/Content/Bootstrap/css/bootstrap.min.css")" type="text/css" rel="stylesheet" />
+		<script src="@Url.Content("~/Content/custom.js")"></script>
+		<script type="text/javascript">
+			$(function () {
+				@{
+					if (!string.IsNullOrEmpty(ViewBag.SelectedNavClass))
+					{
+						<text>
+						$(".nav-@(ViewBag.SelectedNavClass)").closest("li").addClass("active");
+						</text>
+					}
+				}
+			});
+		</script>
+		<style type="text/css">
+			body {
+				margin-top: 60px;
+			}
+			p.welcome {
+				color: #fff !important;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<p class="navbar-text welcome">Welcome back @SessionInfo.Current.FullName!</p> 
+						</ul>
+						<ul class="nav">
+							<li><a class="nav-dashboard" href="@Url.Action("Index", "Dashboard", SessionInfo.Current.SPContextRouteValues)">Dashboard</a></li>
+							<li><a class="nav-students" href="@Url.Action("IndexAsync", "Students", SessionInfo.Current.SPContextRouteValues)">Students</a></li>
+							<li><a class="nav-sections" href="@Url.Action("IndexAsync", "Sections", SessionInfo.Current.SPContextRouteValues)">Sections</a></li>
+							<li class="divider-vertical"></li>
+						</ul>
+						<ul class="nav pull-right">
+							<li class="divider-vertical"></li>
+							<li><a id="debug" class="nav-debug" href="@Url.Action("Index", "Debug", SessionInfo.Current.SPContextRouteValues)">Debug</a></li>
+							<li><a id="logout" href="@Url.Action("Logout", "Authorize")">Logout</a></li>
+						</ul>
+					</div><!-- /.nav-collapse -->
+				</div><!-- /.container -->
+			</div><!-- /.navbar-inner -->
+		</div><!-- /.navbar -->
+		<div class="body container">
+			@RenderBody()
+		</div>
+    </body>
+</html>

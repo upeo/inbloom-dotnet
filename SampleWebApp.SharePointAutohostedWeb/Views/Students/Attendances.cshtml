@@ -1,0 +1,40 @@
+﻿@model SampleWebApp.Models.StudentAttendancesListViewModel
+
+<h1>Student Attendance</h1>
+
+<table class="table table-bordered table-striped">
+	<tr>
+		<th>Event</th>
+        <th>Date</th>
+    </tr>
+
+    @if (Model.StudentAttendances.HasValues) { 
+
+        foreach (dynamic attendance in Model.StudentAttendances)
+        {
+
+            foreach (dynamic schoolYearAttendance in attendance.schoolYearAttendance)
+            {
+
+               foreach (dynamic attendanceEvent in schoolYearAttendance.attendanceEvent)
+               {
+
+                   // 'event' is a c# keyword so we have to pull it out carefully. Can't just use attendanceEvent.event
+                   Newtonsoft.Json.Linq.JToken attEvtToken = attendanceEvent as Newtonsoft.Json.Linq.JToken;
+                   string attEvt = attEvtToken.Value<string>("event");
+                   <tr>
+                        <td>@attEvt</td>
+                        <td>@attendanceEvent.date</td>
+			        </tr>
+                }
+            }	
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="2">No Attendance Data</td>
+        </tr>   
+    }
+
+</table>

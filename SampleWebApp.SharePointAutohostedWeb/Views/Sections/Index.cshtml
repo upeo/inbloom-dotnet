@@ -1,0 +1,58 @@
+﻿@model SampleWebApp.Models.SectionListViewModel
+
+@{
+	ViewBag.Title = "Sections";
+}
+
+<h2>Sections</h2>
+
+<h4>Parameters for show students</h4>
+<div>    
+    Limit:     @Html.DropDownList("limit", 
+                        Enumerable.Range(0, 150).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() })) <br />
+    
+    Offset:    @Html.DropDownList("offset", Enumerable.Range(0, 150).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() })) <br />
+    
+    View:      @Html.DropDownList("view", new SelectList(
+                                      new List<Object>{
+                                          new { value = "" , text = "" }, 
+                                          new { value = "gradebook" , text = "Gradebook"  }
+                                        }, "value", "text", 0))
+
+</div>
+
+<h4>Found @Model.Sections.Count sections</h4>
+<table class="table table-bordered table-striped">
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Medium</th>
+		<th>&nbsp;</th>
+	</thead>
+	@{
+		foreach (dynamic section in Model.Sections)
+		{
+			<tr>
+				<td>@(section.id)</td>
+				<td>@(section.uniqueSectionCode)</td>
+				<td>@(section.mediumOfInstruction)</td>
+                <td><a data-toggle="modal" href="@Url.Action("GetStudents", new { sectionId = section.id })" data-target="#SectionDetailModal">show students</a>&nbsp; |<br />
+                    <a data-toggle="modal" href="@Url.Action("GetStudentsAsync", new { sectionId = section.id })" data-target="#SectionDetailModal">show students async</a>
+				</td>
+			</tr>
+		}
+	}
+</table>
+
+<div id="SectionDetailModal" class="modal hide fade">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3>Students</h3>
+  </div>
+  <div class="modal-body">
+	<!--Loaded Dynamically-->
+  </div>
+  <div class="modal-footer">
+	<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+  </div>
+</div>

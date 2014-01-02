@@ -1,0 +1,68 @@
+﻿@model SampleWebApp.Models.StudentDetailViewModel
+
+<style type="text/css">
+	.row { margin-bottom: 15px; }
+</style>
+
+<h1>Student Detail</h1>
+<div class="well">
+	<div class="row">
+		<div class="span2">Full Name</div>
+		<div class="span4">@Model.Student.name.firstName @Model.Student.name.lastSurname</div>
+	</div>
+	<div class="row">
+		<div class="span2">Gender</div>
+		<div class="span3">@Model.Student.sex</div>
+	</div>
+	<div class="row">
+		<div class="span2">Birth Date</div>
+		<div class="span3">@Convert.ToDateTime(Model.Student.birthData.birthDate.ToString()).ToString("ddd MMMM dd yyyy")</div>
+	</div>
+	<div class="row">
+		<div class="span2">English Proficiency</div>
+		<div class="span3">@Model.Student.limitedEnglishProficiency</div>
+	</div>
+	<div class="row">
+		<div class="span2">Address</div>
+		<div class="span3">
+			@{
+				if (Model.Student.address.Count == 0)
+				{
+					<em>Not specified</em>
+				}
+				else
+				{
+					foreach (var address in Model.Student.address)
+					{
+						<strong>@address.addressType</strong><br/>
+						@address.streetNumberName<br/>
+						@address.city<text>,</text> @address.stateAbbreviation<br/>
+						@address.postalCode<br/>
+					}
+				}
+			}
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2">Email</div>
+		<div class="span6">
+			@{
+				if (Model.Student.electronicMail.Count == 0)
+				{
+					<em>Not specified</em>
+				}
+				else
+				{
+					foreach (var email in Model.Student.electronicMail)
+					{
+						<a href="mailto:@(email.emailAddress)">@(email.emailAddress)</a>
+						<text>(</text>@(email.emailAddressType)<text>)</text>
+						<br/>
+					}
+				}
+			}
+		</div>
+	</div>
+</div>
+
+&laquo; <a href="@Url.Action("IndexAsync", new { limit = 0 })">Back to student list</a>
