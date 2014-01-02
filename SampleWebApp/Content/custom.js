@@ -20,6 +20,11 @@
 		$("#SectionDetailModal .modal-body").html("Loading...").load(target, function() {
 			$("#SectionDetailModal").modal("show");
 		});
+<<<<<<< HEAD
+=======
+
+		return false;
+>>>>>>> master
 	});
 
 	function updateQueryStringParameter(uri, key, value) {

@@ -50,6 +50,13 @@ namespace SampleWebApp.Controllers
 
         public ActionResult GetStudents(string sectionId, int? limit, int? offset, string view)
         {
+<<<<<<< HEAD
+=======
+            if (string.IsNullOrEmpty(sectionId))
+            {
+                return RedirectToAction("Index");
+            }
+>>>>>>> master
             try
             {
                 var sectionService = new SectionDataService();
@@ -68,6 +75,14 @@ namespace SampleWebApp.Controllers
         [HandleError(ExceptionType = typeof(TimeoutException))]
         public async Task<ActionResult> GetStudentsAsync(string sectionId, int? limit, int? offset, string view)
         {
+<<<<<<< HEAD
+=======
+            if (string.IsNullOrEmpty(sectionId))
+            {
+                return RedirectToAction("IndexAsync");
+            }
+            
+>>>>>>> master
             try
             {
                 var sectionService = new SectionDataService();
