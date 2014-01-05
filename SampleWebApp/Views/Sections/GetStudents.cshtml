@@ -19,9 +19,6 @@
 			@foreach (var student in Model)
 			{
 				<li><a href="@Url.Action("Detail", "Students", new { studentId = student.id })">@student.name.firstName @student.name.lastSurname</a></li>
-<<<<<<< HEAD
-			}
-=======
 
                 if (student.studentGradebookEntries != null)
                 {
@@ -47,7 +44,6 @@
                     </table>
                 }
             }
->>>>>>> master
 		</ul>
 	}
 }
